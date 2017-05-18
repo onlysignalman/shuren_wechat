@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 /**
  * Created by 董帮辉 on 2017-5-18.
  */
-@Service
+@Service("userBaseinfoService")
 public class UserBaseinfoServiceImpl implements UserBaseinfoService {
 }
