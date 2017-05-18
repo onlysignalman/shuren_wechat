@@ -2,6 +2,7 @@ package com.shuren.resume.pojo;
 
 /**
  * Created by dbh on 2017/5/17.
+ * 培训经历
  */
 public class TrainExperience {
 

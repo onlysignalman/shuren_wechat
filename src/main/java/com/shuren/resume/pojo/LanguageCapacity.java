@@ -2,6 +2,7 @@ package com.shuren.resume.pojo;
 
 /**
  * Created by dbh on 2017/5/17.
+ * 语言能力
  */
 public class LanguageCapacity {
 

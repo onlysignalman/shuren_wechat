@@ -2,6 +2,7 @@ package com.shuren.resume.pojo;
 
 /**
  * Created by dbh on 2017/5/18.
+ * 主页列表
  */
 public class Page {
 
