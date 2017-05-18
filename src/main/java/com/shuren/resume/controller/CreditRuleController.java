@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by 董帮辉 on 2017-5-18.
  */
 @Controller
-@RequestMapping("/userBaseinfo")
-public class UserBaseinfoController {
+@RequestMapping("/creditRule")
+public class CreditRuleController {
 }

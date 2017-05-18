@@ -1,5 +1,7 @@
 package com.shuren.resume.pojo;
 
+import java.math.BigDecimal;
+
 /**
  * Created by 董帮辉 on 2017-5-18.
  * 积分购买
@@ -12,7 +14,7 @@ public class PurchaseCreditType {
     private Integer point;
 
     //金额
-    private Integer money;
+    private BigDecimal money;
 
     //创建时间
     private Long createTimeStamp;
@@ -45,11 +47,11 @@ public class PurchaseCreditType {
         this.point = point;
     }
 
-    public Integer getMoney() {
+    public BigDecimal getMoney() {
         return money;
     }
 
-    public void setMoney(Integer money) {
+    public void setMoney(BigDecimal money) {
         this.money = money;
     }
 
