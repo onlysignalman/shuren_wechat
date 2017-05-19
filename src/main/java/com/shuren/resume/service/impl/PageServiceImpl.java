@@ -1,6 +1,7 @@
 package com.shuren.resume.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.shuren.resume.mapper.PageMapper;
 import com.shuren.resume.pojo.Page;
 import com.shuren.resume.service.PageService;
@@ -19,12 +20,15 @@ public class PageServiceImpl implements PageService {
     private PageMapper pageMapper;
 
     @Override
-    public List<Page> findAll(Integer pageNum, Integer pageSize) {
+    public PageInfo<Page> findAll(Integer pageNum, Integer pageSize) {
 
         //分页助手进行分页
         PageHelper.startPage(pageNum, pageSize);
 
+        List<Page> pages = pageMapper.selectAll();
 
-        return null;
+        PageInfo<Page> pagePageInfo = new PageInfo<>(pages);
+
+        return pagePageInfo;
     }
 }

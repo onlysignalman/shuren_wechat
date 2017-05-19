@@ -1,5 +1,8 @@
 package com.shuren.resume.controller;
 
+import com.github.pagehelper.PageInfo;
+import com.shuren.resume.bean.BaseReturns;
+import com.shuren.resume.bean.ListReturns;
 import com.shuren.resume.pojo.Page;
 import com.shuren.resume.service.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +26,10 @@ public class PageController {
 
     //查询所有的页面模块
     @RequestMapping(value = "findAll", method = RequestMethod.GET)
-    public ResponseEntity<List<Page>> findAll(@RequestParam("pageNum") Integer pageNum,@RequestParam("pageSize") Integer pageSize){
-        List<Page> list = this.pageService.findAll(pageNum, pageSize);
-
-
-        return ResponseEntity.ok(list);
+    public ResponseEntity<ListReturns<Page>> findAll(@RequestParam("pageNum") Integer pageNum, @RequestParam("pageSize") Integer pageSize){
+        PageInfo<Page> pageInfo = this.pageService.findAll(pageNum, pageSize);
+        ListReturns<Page> pageListReturns = new ListReturns<>(pageInfo.getTotal(), pageInfo.getList());
+        return ResponseEntity.ok(pageListReturns);
     }
 
 }

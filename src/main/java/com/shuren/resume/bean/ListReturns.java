@@ -4,18 +4,28 @@ import java.util.List;
 
 public class ListReturns <T> extends BaseReturns {
 
-	private int count;
+	private Long count;
     private List<T> list;
-	
-	public int getCount() {
+
+	public ListReturns(Long count, List<T> list) {
+		this.count = count;
+		this.list = list;
+	}
+
+
+
+	public Long getCount() {
 		return count;
 	}
-	public void setCount(int count) {
+
+	public void setCount(Long count) {
 		this.count = count;
 	}
+
 	public List<T> getList() {
 		return list;
 	}
+
 	public void setList(List<T> list) {
 		this.list = list;
 	}
