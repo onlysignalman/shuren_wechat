@@ -25,7 +25,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
         registry.addViewController("/page").setViewName("/index");
     }
 
-  /*  //分页助手
+    //分页助手
     @Bean
     public PageHelper pagehelper(){
         PageHelper pageHelper = new PageHelper();
@@ -39,7 +39,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
         p.setProperty("reasonable", "true");
         pageHelper.setProperties(p);
         return pageHelper;
-    }*/
+    }
 
     //处理编码问题
     @Bean

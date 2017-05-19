@@ -4,8 +4,9 @@ import java.util.Calendar;
 
 public class BaseReturns {
 
-	private int status;
+	private Integer status;
     private String error;
+
 	private long servertime = Calendar.getInstance().getTime().getTime();
 	public int getStatus() {
 		return status;

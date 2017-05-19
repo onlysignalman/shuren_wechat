@@ -28,7 +28,7 @@ public class PageController {
     @RequestMapping(value = "findAll", method = RequestMethod.GET)
     public ResponseEntity<ListReturns<Page>> findAll(@RequestParam("pageNum") Integer pageNum, @RequestParam("pageSize") Integer pageSize){
         PageInfo<Page> pageInfo = this.pageService.findAll(pageNum, pageSize);
-        ListReturns<Page> pageListReturns = new ListReturns<>(pageInfo.getTotal(), pageInfo.getList());
+        ListReturns<Page> pageListReturns = new ListReturns<>(200,"请求成功",pageInfo.getTotal(), pageInfo.getList());
         return ResponseEntity.ok(pageListReturns);
     }
 
