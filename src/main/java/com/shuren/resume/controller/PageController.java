@@ -25,6 +25,7 @@ public class PageController {
     @RequestMapping(value = "findAll", method = RequestMethod.GET)
     public ResponseEntity<List<Page>> findAll(@RequestParam("pageNum") Integer pageNum,@RequestParam("pageSize") Integer pageSize){
         List<Page> list = this.pageService.findAll(pageNum, pageSize);
+
         return ResponseEntity.ok(list);
     }
 
