@@ -1,7 +1,6 @@
 package com.shuren.resume.mapper;
 
 import com.shuren.resume.pojo.Page;
-import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 

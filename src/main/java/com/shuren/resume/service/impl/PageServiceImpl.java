@@ -6,6 +6,7 @@ import com.shuren.resume.mapper.PageMapper;
 import com.shuren.resume.pojo.Page;
 import com.shuren.resume.service.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,4 +32,5 @@ public class PageServiceImpl implements PageService {
 
         return pagePageInfo;
     }
+
 }
