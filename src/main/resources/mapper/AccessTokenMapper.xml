@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.shuren.wechat.mapper.AccessTokenMapper">
+<mapper namespace="com.shuren.mapper.wechat.AccessTokenMapper">
 
     <insert id="insert">
         INSERT INTO `wechat_access_token`
@@ -8,7 +8,7 @@
         VALUES (#{access_token},#{expires_in},#{create_time})
     </insert>
 
-    <select id="find" resultType="com.shuren.wechat.bean.base.AccessToken">
+    <select id="find" resultType="com.shuren.bean.wechat.base.AccessToken">
         SELECT *
         FROM `wechat_access_token`
     </select>
