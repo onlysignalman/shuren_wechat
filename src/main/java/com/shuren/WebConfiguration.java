@@ -16,7 +16,7 @@ import java.util.Properties;
  * 配置类
  */
 @Configuration
-@MapperScan("com.shuren.*.mapper")
+@MapperScan("com.shuren.mapper.*")
 public class WebConfiguration extends WebMvcConfigurerAdapter {
 
     //视图解析器
