@@ -2,6 +2,8 @@ package com.shuren.mapper.resume;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.shuren.pojo.resume.Page;
 
 /**
