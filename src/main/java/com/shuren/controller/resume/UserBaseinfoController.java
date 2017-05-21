@@ -21,18 +21,31 @@ public class UserBaseinfoController extends BaseController{
 	@Autowired
 	private UserBaseinfoService userBaseinfoService;
 	
+	/**
+	 * 用户注册
+	 * @param userBaseinfo
+	 */
 	@RequestMapping("/register")
 	public void register(@ModelAttribute UserBaseinfo userBaseinfo){
 		BaseReturns returns = userBaseinfoService.register(userBaseinfo);
 		WriteJson(returns);
 	}
 	
+	/**
+	 * 用户登录
+	 * @param userBaseinfo
+	 */
 	@RequestMapping("/login")
 	public void login(@ModelAttribute UserBaseinfo userBaseinfo){
 		ModelReturns<UserBaseinfo> returns = userBaseinfoService.login(userBaseinfo);
 		WriteJson(returns);
 	}
 	
+	/**
+	 * 忘记密码,更新密码
+	 * @param userBaseinfo
+	 * @param validate
+	 */
 	@RequestMapping("/forget")
 	public void forget(@ModelAttribute UserBaseinfo userBaseinfo,
 			@RequestParam(value="validate", required=true)String validate){
