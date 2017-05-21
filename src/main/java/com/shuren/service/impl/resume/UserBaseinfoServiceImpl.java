@@ -11,7 +11,7 @@ import com.shuren.bean.resume.BaseReturns;
 import com.shuren.bean.resume.ListReturns;
 import com.shuren.bean.resume.ModelReturns;
 import com.shuren.mapper.resume.UserBaseinfoMapper;
-import com.shuren.pojo.resume.ErrorInfos;
+import com.shuren.bean.resume.ErrorInfos;
 import com.shuren.pojo.resume.UserBaseinfo;
 import com.shuren.service.resume.MsgService;
 import com.shuren.service.resume.UserBaseinfoService;
