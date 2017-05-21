@@ -1,5 +1,7 @@
 package com.shuren.controller.resume;
 
+import com.shuren.pojo.resume.CreditDetail;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,4 +11,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/creditDetail")
 public class CreditDetailController {
+
 }
