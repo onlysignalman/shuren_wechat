@@ -14,6 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Created by 董帮辉 on 2017-5-18.
  */
 @Controller
-@RequestMapping("/assesmentType")
+@RequestMapping("/assessmentType")
 public class AssessmentTypeController {
 }
