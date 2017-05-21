@@ -4,7 +4,7 @@ package com.shuren.pojo.resume;
  * Created by dbh on 2017/5/18.
  * 测评报告
  */
-public class AssesmentResult {
+public class AssessmentResult {
 
     private Integer id;
 

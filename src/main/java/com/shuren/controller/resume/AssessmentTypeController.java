@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/assesmentType")
-public class AssesmentTypeController {
+public class AssessmentTypeController {
 }

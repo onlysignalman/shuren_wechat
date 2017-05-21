@@ -17,11 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/assesment")
-public class AssesmentController {
+public class AssessmentController {
 
     @Autowired
     private AssessmentService assessmentService;
 
+    //分页查询测评信息
     @RequestMapping(value = "findAllByPage", method = RequestMethod.GET)
     public ResponseEntity<ListReturns<Assessment>> findAllByPage(@RequestParam("pageNum") Integer pageNum,
                                                                  @RequestParam("pageSize") Integer pageSize){
