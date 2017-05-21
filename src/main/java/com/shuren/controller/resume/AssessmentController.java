@@ -27,8 +27,8 @@ public class AssessmentController {
     public ResponseEntity<ListReturns<Assessment>> findAllByPage(@RequestParam("pageNum") Integer pageNum,
                                                                  @RequestParam("pageSize") Integer pageSize){
         PageInfo<Assessment> pageInfo = this.assessmentService.findAllByPage(pageNum, pageSize);
-        ListReturns<Assessment> pageListReturns = new ListReturns<>(200,"请求成功",pageInfo.getTotal(), pageInfo.getList());
-        return ResponseEntity.ok(pageListReturns);
+        ListReturns<Assessment> assessmentListReturns = new ListReturns<>(200,"请求成功",pageInfo.getTotal(), pageInfo.getList());
+        return ResponseEntity.ok(assessmentListReturns);
     }
 
 }
