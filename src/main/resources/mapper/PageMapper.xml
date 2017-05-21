@@ -6,5 +6,16 @@
       SELECT *
       FROM page
     </select>
+    
+    <select id="queryCount" resultType="long">
+      SELECT count(*)
+      FROM page
+    </select>
+    
+    <select id="queryByPageList" resultType="page">
+        SELECT *
+        FROM page
+        limit ${offset},${limit}
+    </select>
 
 </mapper>

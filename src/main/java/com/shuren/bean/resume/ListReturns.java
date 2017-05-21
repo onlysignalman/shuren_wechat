@@ -7,9 +7,10 @@ public class ListReturns <T> extends BaseReturns {
 	private Long count;
     private List<T> list;
 
+
+
 	public ListReturns(Integer status, String error,Long count, List<T> list) {
-		super.setStatus(status);
-		super.setError(error);
+
 		this.count = count;
 		this.list = list;
 	}

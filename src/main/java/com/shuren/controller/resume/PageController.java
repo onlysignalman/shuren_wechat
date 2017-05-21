@@ -9,6 +9,7 @@ import com.shuren.service.resume.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,10 +27,11 @@ public class PageController {
     private PageService pageService;
 
     //查询所有的页面模块
-    @RequestMapping(value = "findAll", method = RequestMethod.GET)
-    public ResponseEntity<ListReturns<Page>> findAll(@RequestParam("pageNum") Integer pageNum, @RequestParam("pageSize") Integer pageSize){
-        PageInfo<Page> pageInfo = this.pageService.findAll(pageNum, pageSize);
-        ListReturns<Page> pageListReturns = new ListReturns<>(200,"请求成功",pageInfo.getTotal(), pageInfo.getList());
+    @RequestMapping(value = "findAllByPage", method = RequestMethod.GET)
+    public ResponseEntity<ListReturns<Page>> findAllByPage(@RequestParam(value = "offset", required = false, defaultValue = "0") Integer offset,
+                                                     @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit,
+                                                     @RequestParam(value = "json",required = false) String json){
+        ListReturns<Page> pageListReturns = this.pageService.findByPageList(offset, limit,json);
         return ResponseEntity.ok(pageListReturns);
     }
 

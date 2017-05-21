@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public class BaseReturns {
 
-	private Integer status;
+	private int status;
     private String error;
 
 	private long servertime = Calendar.getInstance().getTime().getTime();

@@ -1,6 +1,7 @@
 package com.shuren.service.resume;
 
 import com.github.pagehelper.PageInfo;
+import com.shuren.bean.resume.ListReturns;
 import com.shuren.pojo.resume.Page;
 
 /**
@@ -11,5 +12,5 @@ public interface PageService {
      * 查询所有页面模块信息
      * @return
      */
-    PageInfo<Page> findAll(Integer pageNum, Integer pageSize);
+    ListReturns<Page> findByPageList(Integer offset, Integer limit, String json);
 }
