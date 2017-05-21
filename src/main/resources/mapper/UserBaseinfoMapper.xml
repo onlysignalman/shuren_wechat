@@ -19,7 +19,7 @@
 			mobile = #{mobile} AND password = #{password}
 	</select>
 	
-	<select id="queryCount" parameterType="Map" resultType="Long">
+	<select id="queryCount" parameterType="java.util.Map" resultType="java.lang.Long">
 		SELECT 
 			COUNT(1) 
 		FROM 
@@ -28,7 +28,7 @@
 			mobile = #{mobile} AND password = #{password}
 	</select>
 	
-	<select id="queryList" parameterType="Map" resultType="Map">
+	<select id="queryList" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT 
 			* 
 		FROM 
