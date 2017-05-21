@@ -1,5 +1,7 @@
 package com.shuren.service.impl.resume;
 
+import com.github.pagehelper.PageInfo;
+import com.shuren.pojo.resume.Item;
 import org.springframework.stereotype.Service;
 
 import com.shuren.service.resume.ItemService;
@@ -9,4 +11,11 @@ import com.shuren.service.resume.ItemService;
  */
 @Service("itemService")
 public class ItemServiceImpl implements ItemService {
+
+
+    @Override
+    public PageInfo<Item> findAllByPage(Integer pageNum, Integer pageSize) {
+
+        return null;
+    }
 }
