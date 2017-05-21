@@ -55,13 +55,18 @@ public class UserBaseinfoServiceImpl implements UserBaseinfoService {
 		Map<String, Object> params = new HashMap<>();
 		params.put("mobile", userBaseinfo.getMobile());
 		params.put("password", userBaseinfo.getPassword());
+		//登录失败
 		if(userBaseinfoMapper.queryCount(params) == null ||
 				userBaseinfoMapper.queryCount(params) <= 0){
 			returns.setError(ErrorInfos.SHOUJIHAOHUOMIMACUOWU.getError());
 			returns.setStatus(ErrorInfos.SHOUJIHAOHUOMIMACUOWU.getStatus());
 			return returns;
 		}
+		//登录成功
 		userBaseinfo = userBaseinfoMapper.login(userBaseinfo);
+		returns.setError(ErrorInfos.LOGINSUCCESS.getError());
+		returns.setStatus(ErrorInfos.LOGINSUCCESS.getStatus());
+		returns.setModel(userBaseinfo);
 		return returns;
 	}
 

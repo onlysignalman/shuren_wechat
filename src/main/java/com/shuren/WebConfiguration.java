@@ -1,10 +1,12 @@
 package com.shuren;
 
 import com.github.pagehelper.PageHelper;
+import com.shuren.interceptor.LoginInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -50,5 +52,14 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
         return characterEncodingFilter;
     }
 
+    //拦截器配置
+    @Bean
+    public LoginInterceptor loginInterceptor(){
+        return new LoginInterceptor();
+    }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(loginInterceptor());
+    }
 }

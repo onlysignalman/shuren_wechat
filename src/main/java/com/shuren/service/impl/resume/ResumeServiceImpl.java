@@ -1,5 +1,7 @@
 package com.shuren.service.impl.resume;
 
+import com.shuren.bean.resume.ListReturns;
+import com.shuren.pojo.resume.Resume;
 import com.shuren.service.resume.ResumeService;
 import org.springframework.stereotype.Service;
 
@@ -8,4 +10,8 @@ import org.springframework.stereotype.Service;
  */
 @Service("resumeService")
 public class ResumeServiceImpl implements ResumeService {
+    @Override
+    public ListReturns<Resume> findMyResume(Integer offset, Integer limit) {
+        return null;
+    }
 }

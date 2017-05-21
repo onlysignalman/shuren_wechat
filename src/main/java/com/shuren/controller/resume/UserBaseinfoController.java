@@ -11,6 +11,8 @@ import com.shuren.bean.resume.ModelReturns;
 import com.shuren.pojo.resume.UserBaseinfo;
 import com.shuren.service.resume.UserBaseinfoService;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by 董帮辉 on 2017-5-18.
  */
@@ -36,8 +38,12 @@ public class UserBaseinfoController extends BaseController{
 	 * @param userBaseinfo
 	 */
 	@RequestMapping("/login")
-	public void login(@ModelAttribute UserBaseinfo userBaseinfo){
+	public void login(@ModelAttribute UserBaseinfo userBaseinfo, HttpSession session){
 		ModelReturns<UserBaseinfo> returns = userBaseinfoService.login(userBaseinfo);
+		//登录成功
+		if (returns.getStatus()==0l){
+			session.setAttribute("user",returns.getModel());
+		}
 		WriteJson(returns);
 	}
 	
