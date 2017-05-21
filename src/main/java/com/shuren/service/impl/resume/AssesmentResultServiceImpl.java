@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by 董帮辉 on 2017-5-18.
  */
-@Service("asesmentResultService")
+@Service("assessmentResultService")
 public class AssesmentResultServiceImpl implements AssessmentResultService {
 
     @Autowired
