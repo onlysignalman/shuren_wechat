@@ -4,7 +4,7 @@ package com.shuren.pojo.resume;
  * Created by dbh on 2017/5/18.
  * 测评类型
  */
-public class AssesmentType {
+public class AssessmentType {
 
     private Integer assTypeId;
 
