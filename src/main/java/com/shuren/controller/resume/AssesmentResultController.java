@@ -7,6 +7,7 @@ import com.shuren.service.resume.AssessmentResultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -20,6 +21,7 @@ public class AssesmentResultController {
     private AssessmentResultService assessmentResultService;
 
     //分页查询测评报告信息
+    @RequestMapping(value = "findByPage", method = RequestMethod.GET)
     public ResponseEntity<ListReturns<AssessmentResult>> findByPage(@RequestParam("pageNum") Integer pageNum,
                                                        @RequestParam("pageSize") Integer pageSize){
 
