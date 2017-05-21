@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 测评
  */
 @Controller
-@RequestMapping("/assesment")
+@RequestMapping("/assessment")
 public class AssessmentController {
 
     @Autowired

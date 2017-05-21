@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Created by 董帮辉 on 2017-5-18.
  * 测评报告
  */
-@RequestMapping("/assesmentResult")
+@RequestMapping("/assessmentResult")
 public class AssesmentResultController {
 
     @Autowired
