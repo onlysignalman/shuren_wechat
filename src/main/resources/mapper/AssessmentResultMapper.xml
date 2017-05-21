@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shuren.mapper.resume.AssessmentResultMapper">
 
-    <select id="selectAll" resultType="asessmentResult">
+    <select id="selectAll" resultType="assessmentResult">
       SELECT *
       FROM asessment_result
     </select>
