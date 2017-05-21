@@ -14,6 +14,10 @@ public class ListReturns <T> extends BaseReturns {
 		this.list = list;
 	}
 
+	public ListReturns() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Long getCount() {
 		return count;

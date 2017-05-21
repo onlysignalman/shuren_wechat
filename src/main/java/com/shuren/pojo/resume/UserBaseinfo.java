@@ -5,113 +5,122 @@ package com.shuren.pojo.resume;
  * 用户基础信息
  */
 public class UserBaseinfo {
+	
+	//自增id
+    private Long userId;
 
-    private Integer id;
+    //微信唯一Id
+    private String openId;
 
-    //企业名称
-    private String companyName;
+    //用户昵称
+    private String nickName;
 
-    //企业性质
-    private String companyType;
+    //用户手机号
+    private String mobile;
 
-    //企业规模
-    private String companyScale;
+    //用户邮箱
+    private String email;
 
-    //行业性质
-    private String businessType;
+    //密文密码
+    private String password;
+    
+    //建立分数
+    private Integer score;
 
-    //职业名称
-    private String jobName;
+    //逻辑删
+    private Integer isDel;
+    
+    //添加时间(存储的是毫秒值)
+    private Long createTimeStamp;
 
-    //工作时间(存储的是毫秒值)
-    private Long jobTime;
+    //最近修改时间
+    private Long lastUpdateTimeStamp;
 
-    //薪资水平
-    private String salary;
+	public Long getUserId() {
+		return userId;
+	}
 
-    //工作内容
-    private String text;
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
-    //第几份工作的索引
-    private Integer idnex;
+	public String getOpenId() {
+		return openId;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public void setOpenId(String openId) {
+		this.openId = openId;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public String getNickName() {
+		return nickName;
+	}
 
-    public String getCompanyName() {
-        return companyName;
-    }
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
+	public Integer getScore() {
+		return score;
+	}
 
-    public String getCompanyType() {
-        return companyType;
-    }
+	public void setScore(Integer score) {
+		this.score = score;
+	}
 
-    public void setCompanyType(String companyType) {
-        this.companyType = companyType;
-    }
+	public String getMobile() {
+		return mobile;
+	}
 
-    public String getCompanyScale() {
-        return companyScale;
-    }
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
 
-    public void setCompanyScale(String companyScale) {
-        this.companyScale = companyScale;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getBusinessType() {
-        return businessType;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setBusinessType(String businessType) {
-        this.businessType = businessType;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public String getJobName() {
-        return jobName;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public void setJobName(String jobName) {
-        this.jobName = jobName;
-    }
+	public Integer getIsDel() {
+		return isDel;
+	}
 
-    public Long getJobTime() {
-        return jobTime;
-    }
+	public void setIsDel(Integer isDel) {
+		this.isDel = isDel;
+	}
 
-    public void setJobTime(Long jobTime) {
-        this.jobTime = jobTime;
-    }
+	public Long getCreateTimeStamp() {
+		return createTimeStamp;
+	}
 
-    public String getSalary() {
-        return salary;
-    }
+	public void setCreateTimeStamp(Long createTimeStamp) {
+		this.createTimeStamp = createTimeStamp;
+	}
 
-    public void setSalary(String salary) {
-        this.salary = salary;
-    }
+	public Long getLastUpdateTimeStamp() {
+		return lastUpdateTimeStamp;
+	}
 
-    public String getText() {
-        return text;
-    }
+	public void setLastUpdateTimeStamp(Long lastUpdateTimeStamp) {
+		this.lastUpdateTimeStamp = lastUpdateTimeStamp;
+	}
 
-    public void setText(String text) {
-        this.text = text;
-    }
+	@Override
+	public String toString() {
+		return "UserBaseinfo [userId=" + userId + ", openId=" + openId + ", nickName=" + nickName + ", mobile=" + mobile
+				+ ", email=" + email + ", password=" + password + ", score=" + score + ", isDel=" + isDel
+				+ ", createTimeStamp=" + createTimeStamp + ", lastUpdateTimeStamp=" + lastUpdateTimeStamp + "]";
+	}
 
-    public Integer getIdnex() {
-        return idnex;
-    }
-
-    public void setIdnex(Integer idnex) {
-        this.idnex = idnex;
-    }
 }

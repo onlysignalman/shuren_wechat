@@ -17,7 +17,7 @@ import java.util.Map;
  * 董帮辉 2017-3-6.
  */
 @Service("messageService")
-public class MessageServiceImpl implements MessageService {
+public class MsgServiceImpl implements MessageService {
 
     @Override
     public String responseMessage(Map<String, String> map) {
