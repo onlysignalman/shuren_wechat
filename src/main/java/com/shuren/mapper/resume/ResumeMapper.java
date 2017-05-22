@@ -14,12 +14,12 @@ public interface ResumeMapper {
      * @param userId
      * @return
      */
-    Long queryCountByUserId(@Param("userId") Long userId);
+    Long queryCountByUserId(@Param("userId") Integer userId);
 
     /**
      * 根据用户id查询简历信息
      * @param userId
      * @return
      */
-    List<Resume> queryListByUserId(@Param("userId") Long userId);
+    List<Resume> queryListByUserId(@Param("userId") Integer userId);
 }

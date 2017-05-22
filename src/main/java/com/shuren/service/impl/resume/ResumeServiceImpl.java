@@ -27,11 +27,11 @@ public class ResumeServiceImpl implements ResumeService {
         ListReturns<Resume> resumeListReturns = new ListReturns<>();
 
         //获取当前用户的登录信息
-        UserBaseinfo user = UserThreadLocal.getUser();
+//        UserBaseinfo user = UserThreadLocal.getUser();
 
         //根据当前登录的用户id查询用户拥有的简历信息
-        Long count = this.resumeMapper.queryCountByUserId(user.getUserId());
-        List<Resume> resumeList = this.resumeMapper.queryListByUserId(user.getUserId());
+        Long count = this.resumeMapper.queryCountByUserId(1);
+        List<Resume> resumeList = this.resumeMapper.queryListByUserId(1);
 
         resumeListReturns.setError(ErrorInfos.RESUMEDATASUCCESS.getError());
         resumeListReturns.setStatus(ErrorInfos.RESUMEDATASUCCESS.getStatus());

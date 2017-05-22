@@ -2,12 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shuren.mapper.resume.ResumeMapper">
 
-    <select id="queryCountByUserId" resultType="int">
-      SELECT COUNT(*)
-      FROM resume r
-      <where>
-          r.userId = #{userId}
-      </where>
+    <select id="queryCountByUserId" resultType="long">
+        SELECT *
+        FROM resume r
+        WHERE r.id in
+        (
+        SELECT d.buyId
+        FROM credit_detail d
+        WHERE d.type=1 AND d.userId=${userId}
+        )
+    </select>
+
+    <select id="queryListByUserId" resultType="resume">
+        SELECT *
+        FROM resume r
+        WHERE r.id in
+        (
+        SELECT d.buyId
+        FROM credit_detail d
+        WHERE d.type=1 AND d.userId=${userId}
+        )
     </select>
 
 </mapper>

@@ -7,7 +7,7 @@ package com.shuren.pojo.resume;
 public class UserBaseinfo {
 	
 	//自增id
-    private Long userId;
+    private Integer userId;
 
     //微信唯一Id
     private String openId;
@@ -36,11 +36,11 @@ public class UserBaseinfo {
     //最近修改时间
     private Long lastUpdateTimeStamp;
 
-	public Long getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
