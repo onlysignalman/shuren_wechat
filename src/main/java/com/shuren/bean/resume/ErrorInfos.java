@@ -8,7 +8,9 @@ public interface ErrorInfos {
 	public final static BaseErrorInfo YANZHENGMAGUOQI = new BaseErrorInfo("验证码过期", -4);
 	public final static BaseErrorInfo LOGINSUCCESS = new BaseErrorInfo("登录成功", 0);
 
-
 	public final static BaseErrorInfo PAGEDATASUCCESS = new BaseErrorInfo("请求成功", 0);
+
+	public final static BaseErrorInfo RESUMEDATASUCCESS = new BaseErrorInfo("请求成功", 0);
+
 
 }
