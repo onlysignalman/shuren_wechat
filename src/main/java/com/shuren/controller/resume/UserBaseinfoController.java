@@ -1,6 +1,9 @@
 package com.shuren.controller.resume;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,8 +13,6 @@ import com.shuren.bean.resume.BaseReturns;
 import com.shuren.bean.resume.ModelReturns;
 import com.shuren.pojo.resume.UserBaseinfo;
 import com.shuren.service.resume.UserBaseinfoService;
-
-import javax.servlet.http.HttpSession;
 
 /**
  * Created by 董帮辉 on 2017-5-18.
@@ -28,9 +29,10 @@ public class UserBaseinfoController extends BaseController{
 	 * @param userBaseinfo
 	 */
 	@RequestMapping("/register")
-	public void register(@ModelAttribute UserBaseinfo userBaseinfo){
-		BaseReturns returns = userBaseinfoService.register(userBaseinfo);
-		WriteJson(returns);
+	public ResponseEntity<BaseReturns> register(@ModelAttribute UserBaseinfo userBaseinfo,
+			@RequestParam(value="msg", required=true)String msg){
+		BaseReturns returns = userBaseinfoService.register(userBaseinfo, msg);
+		return ResponseEntity.ok(returns);
 	}
 	
 	/**
@@ -38,13 +40,13 @@ public class UserBaseinfoController extends BaseController{
 	 * @param userBaseinfo
 	 */
 	@RequestMapping("/login")
-	public void login(@ModelAttribute UserBaseinfo userBaseinfo, HttpSession session){
+	public ResponseEntity<ModelReturns<UserBaseinfo>> login(@ModelAttribute UserBaseinfo userBaseinfo, HttpSession session){
 		ModelReturns<UserBaseinfo> returns = userBaseinfoService.login(userBaseinfo);
 		//登录成功
-		if (returns.getStatus()==0l){
+		if (returns.getStatus()==0){
 			session.setAttribute("user",returns.getModel());
 		}
-		WriteJson(returns);
+		return ResponseEntity.ok(returns);
 	}
 	
 	/**
@@ -53,9 +55,9 @@ public class UserBaseinfoController extends BaseController{
 	 * @param validate
 	 */
 	@RequestMapping("/forget")
-	public void forget(@ModelAttribute UserBaseinfo userBaseinfo,
-			@RequestParam(value="validate", required=true)String validate){
-		BaseReturns returns = userBaseinfoService.forget(userBaseinfo, validate);
-		WriteJson(returns);
+	public ResponseEntity<BaseReturns> forget(@ModelAttribute UserBaseinfo userBaseinfo,
+			@RequestParam(value="msg", required=true)String msg){
+		BaseReturns returns = userBaseinfoService.forget(userBaseinfo, msg);
+		return ResponseEntity.ok(returns);
 	}
 }

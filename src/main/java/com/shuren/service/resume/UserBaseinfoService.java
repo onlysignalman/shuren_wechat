@@ -17,7 +17,7 @@ public interface UserBaseinfoService {
 	 * @param userBaseinfo
 	 * @return
 	 */
-	BaseReturns register(UserBaseinfo userBaseinfo);
+	BaseReturns register(UserBaseinfo userBaseinfo, String msg);
 
 	/**
 	 * 用户登录

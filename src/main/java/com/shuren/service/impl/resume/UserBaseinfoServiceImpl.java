@@ -30,10 +30,17 @@ public class UserBaseinfoServiceImpl implements UserBaseinfoService {
 	private MsgService msgService;
 	
 	@Override
-	public BaseReturns register(UserBaseinfo userBaseinfo) {
+	public BaseReturns register(UserBaseinfo userBaseinfo, String msg) {
 		// TODO Auto-generated method stub
 		BaseReturns returns = new BaseReturns();
-		//1.判断是否已经注册
+		//1.短信校验
+		/*ModelReturns<Map<String, Object>> msg = msgService.getLastMsg(userBaseinfo.getMobile());
+		if(msg.getModel().get("msg") == null){
+			returns.setError(ErrorInfos.YANZHENGMACUOWU.getError());
+			returns.setStatus(ErrorInfos.YANZHENGMACUOWU.getStatus());
+			return returns;
+		}*/
+		//2.判断是否已经注册
 		Map<String, Object> params = new HashMap<>();
 		params.put("mobile", userBaseinfo.getMobile());
 		if(userBaseinfoMapper.queryCount(params) != null &&
@@ -86,7 +93,7 @@ public class UserBaseinfoServiceImpl implements UserBaseinfoService {
 		// TODO Auto-generated method stub
 		BaseReturns returns = new BaseReturns();
 		//1.从日志库查该手机号最后一条短信验证码信息
-		ModelReturns<Map<String, Object>> msg = msgService.getLastMsg(userBaseinfo.getMobile());
+		/*ModelReturns<Map<String, Object>> msg = msgService.getLastMsg(userBaseinfo.getMobile());
 		if(msg.getModel().get("msg") == null){
 			returns.setError(ErrorInfos.YANZHENGMACUOWU.getError());
 			returns.setStatus(ErrorInfos.YANZHENGMACUOWU.getStatus());
@@ -103,7 +110,7 @@ public class UserBaseinfoServiceImpl implements UserBaseinfoService {
 			returns.setError(ErrorInfos.YANZHENGMACUOWU.getError());
 			returns.setStatus(ErrorInfos.YANZHENGMACUOWU.getStatus());
 			return returns;
-		}
+		}*/
 		userBaseinfo.setPassword(SecurityUtils.MD5(userBaseinfo.getPassword()));
 		userBaseinfoMapper.forget(userBaseinfo);
 		return returns;
