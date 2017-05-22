@@ -14,4 +14,12 @@ public interface ResumeService {
      * @return
      */
     ListReturns<Resume> findMyResume(Integer offset, Integer limit);
+
+    /**
+     * 查询简历模板市场
+     * @param offset
+     * @param limit
+     * @return
+     */
+    ListReturns<Resume> findResumeList(Integer offset, Integer limit);
 }

@@ -24,9 +24,16 @@ public class ResumeController {
     //查询我的简历
     @RequestMapping(value = "findMyResume", method = RequestMethod.GET)
     public ResponseEntity<ListReturns<Resume>> findMyResume(@RequestParam(value = "offset", required = false, defaultValue = "0") Integer offset,
-                                              @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit){
-        ListReturns<Resume> resumeListReturns = this.resumeService.findMyResume(offset,limit);
+                                                            @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit) {
+        ListReturns<Resume> resumeListReturns = this.resumeService.findMyResume(offset, limit);
         return ResponseEntity.ok(resumeListReturns);
     }
 
+    //查询简历市场
+    @RequestMapping(value = "findResumeList", method = RequestMethod.GET)
+    public ResponseEntity<ListReturns<Resume>> findResumeList(@RequestParam(value = "offset", required = false, defaultValue = "0") Integer offset,
+                                                              @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit) {
+        ListReturns<Resume> resumeListReturns = this.resumeService.findResumeList(offset, limit);
+        return ResponseEntity.ok(resumeListReturns);
+    }
 }

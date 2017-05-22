@@ -9,7 +9,7 @@
         (
         SELECT d.buyId
         FROM credit_detail d
-        WHERE d.type=1 AND d.userId=${userId}
+        WHERE d.type=${type} AND d.userId=${userId}
         )
     </select>
 
@@ -20,8 +20,20 @@
         (
         SELECT d.buyId
         FROM credit_detail d
-        WHERE d.type=1 AND d.userId=${userId}
+        WHERE d.type=${type} AND d.userId=${userId}
         )
+        LIMIT ${offset},${limit}
+    </select>
+    
+    <select id="queryCount" resultType="long">
+        SELECT COUNT(*)
+        FROM resume r
+    </select>
+    
+    <select id="queryList" resultType="resume">
+        SELECT *
+        FROM resume r
+        LIMIT ${offset},${limit}
     </select>
 
 </mapper>
