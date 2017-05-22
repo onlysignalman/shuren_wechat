@@ -1,13 +1,13 @@
 package com.shuren.service.impl.resume;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+import com.shuren.bean.resume.Constant;
+import com.shuren.bean.resume.ErrorInfos;
+import com.shuren.bean.resume.ListReturns;
 import com.shuren.mapper.resume.AssessmentMapper;
 import com.shuren.pojo.resume.Assessment;
+import com.shuren.service.resume.AssessmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.shuren.service.resume.AssessmentService;
 
 import java.util.List;
 
@@ -20,17 +20,25 @@ public class AssessmentServiceImpl implements AssessmentService {
     @Autowired
     private AssessmentMapper assessmentMapper;
 
+
     @Override
-    public PageInfo<Assessment> findAllByPage(Integer pageNum, Integer pageSize) {
+    public ListReturns<Assessment> findMyAssessmentList(Integer offset, Integer limit) {
 
-        //分页助手进行分页
-        PageHelper.startPage(pageNum, pageSize);
+        ListReturns<Assessment> resumeListReturns = new ListReturns<>();
 
-        List<Assessment> assessments = assessmentMapper.selectAll();
+        //获取当前用户的登录信息
+//        UserBaseinfo user = UserThreadLocal.getUser();
 
-        PageInfo<Assessment> pagePageInfo = new PageInfo<>(assessments);
 
-        return pagePageInfo;
+        //分页查询测评信息
+        Long count = this.assessmentMapper.findMyAssessmentCount(1, Constant.ASSESSMENTTYPE);
+        List<Assessment> assessmentList = this.assessmentMapper.findMyAssessmentList(offset, limit, 1, Constant.ASSESSMENTTYPE);
 
+        resumeListReturns.setError(ErrorInfos.RESUMEDATASUCCESS.getError());
+        resumeListReturns.setStatus(ErrorInfos.RESUMEDATASUCCESS.getStatus());
+        resumeListReturns.setCount(count);
+        resumeListReturns.setList(assessmentList);
+
+        return resumeListReturns;
     }
 }

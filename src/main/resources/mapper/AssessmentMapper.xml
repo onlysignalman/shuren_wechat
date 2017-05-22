@@ -2,9 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shuren.mapper.resume.AssessmentMapper">
 
-    <select id="selectAll" resultType="assessment">
-      SELECT *
-      FROM assessment
+    <select id="findMyAssessmentCount" resultType="long">
+        SELECT COUNT(*)
+        FROM assessment a
+        WHERE a.assId in
+        (
+        SELECT d.buyId
+        FROM credit_detail d
+        WHERE d.type=${type} AND d.userId=${userId}
+        )
+    </select>
+    
+    <select id="findMyAssessmentList" resultType="assessment">
+        SELECT *
+        FROM assessment a
+        WHERE a.assId in
+        (
+        SELECT d.buyId
+        FROM credit_detail d
+        WHERE d.type=${type} AND d.userId=${userId}
+        )
+        LIMIT ${offset},${limit}
     </select>
 
 </mapper>

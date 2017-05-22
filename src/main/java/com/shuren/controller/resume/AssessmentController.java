@@ -22,13 +22,12 @@ public class AssessmentController {
     @Autowired
     private AssessmentService assessmentService;
 
-    //分页查询测评信息
-    @RequestMapping(value = "findAllByPage", method = RequestMethod.GET)
-    public ResponseEntity<ListReturns<Assessment>> findAllByPage(@RequestParam("pageNum") Integer pageNum,
-                                                                 @RequestParam("pageSize") Integer pageSize){
-        PageInfo<Assessment> pageInfo = this.assessmentService.findAllByPage(pageNum, pageSize);
-        ListReturns<Assessment> assessmentListReturns = new ListReturns<>(200,"请求成功",pageInfo.getTotal(), pageInfo.getList());
-        return ResponseEntity.ok(assessmentListReturns);
+    //分页查询我的测评
+    @RequestMapping(value = "/findMyAssessmentList", method = RequestMethod.GET)
+    public ResponseEntity<ListReturns<Assessment>> findMyAssessmentList(@RequestParam(value = "offset", required = false, defaultValue = "0") Integer offset,
+                                                                 @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit){
+        ListReturns<Assessment> listReturns = this.assessmentService.findMyAssessmentList(offset, limit);
+        return ResponseEntity.ok(listReturns);
     }
 
 }

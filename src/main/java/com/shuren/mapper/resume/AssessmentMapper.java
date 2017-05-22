@@ -1,6 +1,7 @@
 package com.shuren.mapper.resume;
 
 import com.shuren.pojo.resume.Assessment;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,8 +11,20 @@ import java.util.List;
 public interface AssessmentMapper {
 
     /**
-     * 查询所有测评
+     * 查询我的测评条数
+     * @param userId
+     * @param type
      * @return
      */
-    List<Assessment> selectAll();
+    Long findMyAssessmentCount(@Param("userId") Integer userId,@Param("type") Integer type);
+
+    /**
+     * 查询我的测评
+     * @param offset
+     * @param limit
+     * @param userId
+     * @param type
+     * @return
+     */
+    List<Assessment> findMyAssessmentList(@Param("offset") Integer offset,@Param("limit") Integer limit,@Param("userId") Integer userId,@Param("type") Integer type);
 }
