@@ -26,7 +26,13 @@ public class UserBaseinfo {
     
     //建立分数
     private Integer score;
+    
+    //建立分数
+    private Integer credit;
 
+    //logo
+    public String logo;
+    
     //逻辑删
     private Integer isDel;
     
@@ -116,11 +122,28 @@ public class UserBaseinfo {
 		this.lastUpdateTimeStamp = lastUpdateTimeStamp;
 	}
 
+	public Integer getCredit() {
+		return credit;
+	}
+
+	public void setCredit(Integer credit) {
+		this.credit = credit;
+	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
 	@Override
 	public String toString() {
 		return "UserBaseinfo [userId=" + userId + ", openId=" + openId + ", nickName=" + nickName + ", mobile=" + mobile
-				+ ", email=" + email + ", password=" + password + ", score=" + score + ", isDel=" + isDel
-				+ ", createTimeStamp=" + createTimeStamp + ", lastUpdateTimeStamp=" + lastUpdateTimeStamp + "]";
+				+ ", email=" + email + ", password=" + password + ", score=" + score + ", credit=" + credit + ", logo="
+				+ logo + ", isDel=" + isDel + ", createTimeStamp=" + createTimeStamp + ", lastUpdateTimeStamp="
+				+ lastUpdateTimeStamp + "]";
 	}
 
 }

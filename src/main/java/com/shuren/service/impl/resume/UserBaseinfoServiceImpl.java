@@ -71,8 +71,6 @@ public class UserBaseinfoServiceImpl implements UserBaseinfoService {
 		}
 		//登录成功
 		userBaseinfo = userBaseinfoMapper.login(userBaseinfo);
-		returns.setError(ErrorInfos.LOGINSUCCESS.getError());
-		returns.setStatus(ErrorInfos.LOGINSUCCESS.getStatus());
 		returns.setModel(userBaseinfo);
 		return returns;
 	}

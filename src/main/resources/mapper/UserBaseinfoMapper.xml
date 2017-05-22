@@ -3,11 +3,11 @@
 <mapper namespace="com.shuren.mapper.resume.UserBaseinfoMapper">
     <insert id="register" parameterType="UserBaseinfo" useGeneratedKeys="true" keyProperty="userId">
 		INSERT INTO user_baseinfo
-			(openId, nckName, mobile, email, password, 
-			createTimeStamp, lastUpdateTimeStamp, isDel)
+			(openId, nickName, mobile, email, password, 
+			 credit, logo, createTimeStamp, lastUpdateTimeStamp, isDel)
 	    values
-	    	(#{openId}, #{nckName}, #{mobile}, #{email}, #{password}, 
-	    	unix_timestamp(now()), unix_timestamp(now()), 0)
+	    	(#{openId}, #{nickName}, #{mobile}, #{email}, #{password}, 
+	    	0, #{logo}, unix_timestamp(now()), unix_timestamp(now()), 0)
 	</insert>
 	
 	<select id="login" parameterType="Map" resultType="UserBaseinfo">
