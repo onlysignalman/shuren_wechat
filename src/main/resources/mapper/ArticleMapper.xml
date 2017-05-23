@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shuren.mapper.resume.ArticleMapper">
+
+    <select id="queryByTypeAndSubTypeCount" resultType="long">
+      SELECT COUNT(*)
+      FROM article a
+      <where>
+          a.type = ${type}
+          <if test="subtype!=0">
+            AND a.subtype = ${subtype}
+          </if>
+      </where>
+    </select>
+    
+    <select id="queryByTypeAndSubTypeList" resultType="article">
+        SELECT *
+        FROM article a
+        <where>
+            a.type = ${type}
+            <if test="subtype!=0">
+                AND a.subtype = ${subtype}
+            </if>
+        </where>
+        LIMIT ${offset},${limit}
+    </select>
+
+</mapper>

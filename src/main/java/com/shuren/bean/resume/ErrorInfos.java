@@ -12,5 +12,7 @@ public interface ErrorInfos {
 
 	public final static BaseErrorInfo RESUMEDATASUCCESS = new BaseErrorInfo("请求成功", 0);
 
+	public final static BaseErrorInfo ARTICLEDATASUCCESS = new BaseErrorInfo("请求成功", 0);
+
 
 }

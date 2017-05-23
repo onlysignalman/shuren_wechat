@@ -6,8 +6,24 @@ package com.shuren.bean.resume;
 public interface Constant {
 
     //简历类型
-    public final static int RESUMETYPE = 1;
+    int RESUMETYPE = 1;
 
     //测评类型
-    public final static int ASSESSMENTTYPE = 2;
+    int ASSESSMENTTYPE = 2;
+
+    //案例类型
+    int CASE = 1;
+
+    //职位类型
+    int POSITION = 2;
+
+    //劳资
+    int LABOR = 3;
+
+    //行业
+    int INDUSTRY = 4;
+
+    //资格考试
+    int EXAM = 5;
+
 }
