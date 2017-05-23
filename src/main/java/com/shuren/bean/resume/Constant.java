@@ -26,4 +26,7 @@ public interface Constant {
     //资格考试
     int EXAM = 5;
 
+    //历史文章
+    int HISTORY = 6;
+
 }
