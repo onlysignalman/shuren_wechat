@@ -13,7 +13,8 @@ public interface AssessmentService {
      * 分页查询我的测评信息
      * @param offset
      * @param limit
+     * @param assTypeId
      * @return
      */
-    ListReturns<Assessment> findMyAssessmentList(Integer offset, Integer limit);
+    ListReturns<Assessment> findMyAssessmentList(Integer offset, Integer limit,Integer assTypeId);
 }

@@ -16,7 +16,7 @@ public interface AssessmentMapper {
      * @param type
      * @return
      */
-    Long findMyAssessmentCount(@Param("userId") Integer userId,@Param("type") Integer type);
+    Long findMyAssessmentCount(@Param("userId") Integer userId,@Param("type") Integer type,@Param("assTypeId") Integer assTypeId);
 
     /**
      * 查询我的测评
@@ -26,5 +26,5 @@ public interface AssessmentMapper {
      * @param type
      * @return
      */
-    List<Assessment> findMyAssessmentList(@Param("offset") Integer offset,@Param("limit") Integer limit,@Param("userId") Integer userId,@Param("type") Integer type);
+    List<Assessment> findMyAssessmentList(@Param("offset") Integer offset,@Param("limit") Integer limit,@Param("userId") Integer userId,@Param("type") Integer type,@Param("assTypeId") Integer assTypeId);
 }

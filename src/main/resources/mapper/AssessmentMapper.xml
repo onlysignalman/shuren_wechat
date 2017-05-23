@@ -11,6 +11,7 @@
         FROM credit_detail d
         WHERE d.type=${type} AND d.userId=${userId}
         )
+        AND assTypeId=${assTypeId}
     </select>
     
     <select id="findMyAssessmentList" resultType="assessment">
@@ -22,6 +23,7 @@
         FROM credit_detail d
         WHERE d.type=${type} AND d.userId=${userId}
         )
+        AND assTypeId =${assTypeId}
         LIMIT ${offset},${limit}
     </select>
 

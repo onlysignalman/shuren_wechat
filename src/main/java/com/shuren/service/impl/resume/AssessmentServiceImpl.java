@@ -22,7 +22,7 @@ public class AssessmentServiceImpl implements AssessmentService {
 
 
     @Override
-    public ListReturns<Assessment> findMyAssessmentList(Integer offset, Integer limit) {
+    public ListReturns<Assessment> findMyAssessmentList(Integer offset, Integer limit, Integer assTypeId) {
 
         ListReturns<Assessment> resumeListReturns = new ListReturns<>();
 
@@ -31,8 +31,8 @@ public class AssessmentServiceImpl implements AssessmentService {
 
 
         //分页查询测评信息
-        Long count = this.assessmentMapper.findMyAssessmentCount(1, Constant.ASSESSMENTTYPE);
-        List<Assessment> assessmentList = this.assessmentMapper.findMyAssessmentList(offset, limit, 1, Constant.ASSESSMENTTYPE);
+        Long count = this.assessmentMapper.findMyAssessmentCount(1, Constant.ASSESSMENTTYPE, assTypeId);
+        List<Assessment> assessmentList = this.assessmentMapper.findMyAssessmentList(offset, limit, 1, Constant.ASSESSMENTTYPE, assTypeId);
 
         resumeListReturns.setError(ErrorInfos.RESUMEDATASUCCESS.getError());
         resumeListReturns.setStatus(ErrorInfos.RESUMEDATASUCCESS.getStatus());

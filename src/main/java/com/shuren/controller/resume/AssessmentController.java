@@ -25,8 +25,9 @@ public class AssessmentController {
     //分页查询我的测评
     @RequestMapping(value = "/findMyAssessmentList", method = RequestMethod.GET)
     public ResponseEntity<ListReturns<Assessment>> findMyAssessmentList(@RequestParam(value = "offset", required = false, defaultValue = "0") Integer offset,
-                                                                 @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit){
-        ListReturns<Assessment> listReturns = this.assessmentService.findMyAssessmentList(offset, limit);
+                                                                        @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit,
+                                                                        @RequestParam(value = "json",required = false, defaultValue = "1") Integer assTypeId){
+        ListReturns<Assessment> listReturns = this.assessmentService.findMyAssessmentList(offset, limit,assTypeId);
         return ResponseEntity.ok(listReturns);
     }
 
