@@ -1,6 +1,5 @@
 package com.shuren.service.resume;
 
-import com.github.pagehelper.PageInfo;
 import com.shuren.bean.resume.ListReturns;
 import com.shuren.pojo.resume.Page;
 
