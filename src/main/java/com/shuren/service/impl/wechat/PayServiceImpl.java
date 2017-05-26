@@ -59,8 +59,9 @@ public class PayServiceImpl implements PayService {
         packageParams.put("trade_type", trade_type);
         packageParams.put("openid", openId);
 
-
-
+        //获取签名
+        String sign = WeChatUtils.createSign(packageParams,weChatConfigProperties.getPartnerkey());
+        
 
         return null;
     }

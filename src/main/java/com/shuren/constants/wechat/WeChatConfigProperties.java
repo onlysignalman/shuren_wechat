@@ -16,6 +16,8 @@ public class WeChatConfigProperties {
 
     private String mchId;
 
+    private String partnerkey;
+
     private String accessTokenUrl;
 
     private String uploadURL;
@@ -228,5 +230,13 @@ public class WeChatConfigProperties {
 
     public void setDownloadbill(String downloadbill) {
         this.downloadbill = downloadbill;
+    }
+
+    public String getPartnerkey() {
+        return partnerkey;
+    }
+
+    public void setPartnerkey(String partnerkey) {
+        this.partnerkey = partnerkey;
     }
 }

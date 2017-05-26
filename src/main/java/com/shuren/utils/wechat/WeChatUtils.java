@@ -94,4 +94,22 @@ public class WeChatUtils {
     }
 
 
+    public static String createSign(SortedMap<String, String> packageParams, String partnerkey) {
+        StringBuffer sb = new StringBuffer();
+        Set es = packageParams.entrySet();
+        Iterator it = es.iterator();
+        while (it.hasNext()) {
+            Map.Entry entry = (Map.Entry) it.next();
+            String k = (String) entry.getKey();
+            String v = (String) entry.getValue();
+            if (null != v && !"".equals(v) && !"sign".equals(k)
+                    && !"key".equals(k)) {
+                sb.append(k + "=" + v + "&");
+            }
+        }
+        sb.append("key=" + partnerkey);
+        String sign = SecurityUtils.MD5(sb.toString()).toUpperCase();
+
+        return sign;
+    }
 }
