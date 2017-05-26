@@ -29,4 +29,7 @@ public interface Constant {
     //历史文章
     int HISTORY = 6;
 
+    //编码
+    String charset = "UTF-8";
+
 }

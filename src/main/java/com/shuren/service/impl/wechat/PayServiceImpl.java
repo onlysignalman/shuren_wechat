@@ -4,10 +4,15 @@ import com.shuren.bean.wechat.pay.PublicPayRequestBean;
 import com.shuren.bean.wechat.pay.PublicPayResponseBean;
 import com.shuren.constants.wechat.WeChatConfigProperties;
 import com.shuren.service.wechat.PayService;
+import com.shuren.utils.wechat.DataShapeConvertUtils;
+import com.shuren.utils.wechat.UrlRequestUtils;
 import com.shuren.utils.wechat.WeChatUtils;
+import org.dom4j.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -21,7 +26,7 @@ public class PayServiceImpl implements PayService {
     private WeChatConfigProperties weChatConfigProperties;
 
     @Override
-    public PublicPayResponseBean getPackage(PublicPayRequestBean publicPayRequestBean) {
+    public PublicPayResponseBean getPackage(PublicPayRequestBean publicPayRequestBean) throws IOException, DocumentException {
 
         String openId = publicPayRequestBean.getOpenId();
         //订单号
@@ -61,7 +66,27 @@ public class PayServiceImpl implements PayService {
 
         //获取签名
         String sign = WeChatUtils.createSign(packageParams,weChatConfigProperties.getPartnerkey());
-        
+
+        //拼接xml文件
+        String xml = "<xml>" +
+                    "<appid>" + weChatConfigProperties.getAppId() + "</appid>" +
+                    "<mch_id>"+ weChatConfigProperties.getMchId() + "</mch_id>" +
+                    "<nonce_str>" + nonce_str + "</nonce_str>" +
+                    "<sign>" + sign + "</sign>" +
+                    "<body><![CDATA[" + body + "]]></body>" +
+                    "<out_trade_no>" + orderId + "</out_trade_no>" +
+                    "<attach>" + attach + "</attach>" +
+                    "<total_fee>" + totalFee + "</total_fee>" +
+                    "<spbill_create_ip>" + publicPayRequestBean.getSpbillCreateIp() + "</spbill_create_ip>" +
+                    "<notify_url>" + notify_url + "</notify_url>" +
+                    "<trade_type>" + trade_type + "</trade_type>" +
+                    "<openid>" + openId + "</openid>" +
+                    "</xml>";
+        //调用统一下单接口
+        String result = UrlRequestUtils.sendPost(weChatConfigProperties.getUnifiedorder(), xml);
+
+        Map<String, String> map = DataShapeConvertUtils.xmlToMap(result);
+
 
         return null;
     }

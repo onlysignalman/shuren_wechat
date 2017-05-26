@@ -1,11 +1,13 @@
 package com.shuren.utils.wechat;
 
+import com.shuren.bean.resume.Constant;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -18,10 +20,10 @@ import java.util.Map;
 public class DataShapeConvertUtils {
 
     public static Map<String, String>  xmlToMap(String xml) throws IOException,DocumentException{
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
         SAXReader reader = new SAXReader();
 
-        Document doc = reader.read(xml);
+        Document doc = reader.read(new ByteArrayInputStream(xml.getBytes(Constant.charset)));
 
         Element root = doc.getRootElement();
 
