@@ -87,7 +87,35 @@ public class PayServiceImpl implements PayService {
 
         Map<String, String> map = DataShapeConvertUtils.xmlToMap(result);
 
+        String prepay_id = null;
+        //请求成功
+        if(map.get("return_code").equals("SUCCESS")){
+            //业务交易成功
+            if(map.get("result_code").equals("SUCCESS")){
+                //获取预支付id
+                prepay_id = map.get("prepay_id");
+            }
+        }
 
-        return null;
+        //获取prepay_id后。拼接请求支付所需要的package
+        String timeStamp = System.currentTimeMillis()+"";
+        SortedMap<String, String> finalpackage = new TreeMap<>();
+        String packages = "prepay_id="+prepay_id;
+        finalpackage.put("appId", weChatConfigProperties.getAppId());
+        finalpackage.put("timeStamp", timeStamp);
+        finalpackage.put("nonceStr", nonce_str);
+        finalpackage.put("package", packages);
+        finalpackage.put("signType", "MD5");
+        //签名
+        String finalsign = WeChatUtils.createSign(finalpackage,weChatConfigProperties.getPartnerkey());
+
+        PublicPayResponseBean publicPayResponseBean = new PublicPayResponseBean();
+        publicPayResponseBean.setAppId(weChatConfigProperties.getAppId());
+        publicPayResponseBean.setNonceStr(nonce_str);
+        publicPayResponseBean.setOrderId(orderId);
+        publicPayResponseBean.setSignType("MD5");
+        publicPayResponseBean.setPackages(packages);
+        publicPayResponseBean.setTimeStamp(timeStamp);
+        return publicPayResponseBean;
     }
 }
