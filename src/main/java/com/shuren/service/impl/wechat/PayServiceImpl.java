@@ -118,4 +118,29 @@ public class PayServiceImpl implements PayService {
         publicPayResponseBean.setTimeStamp(timeStamp);
         return publicPayResponseBean;
     }
+
+    @Override
+    public String createSign(Map<String, String> m) {
+
+        SortedMap<String, String> map = new TreeMap<String, String>();
+
+        map.put("appid", m.get("appid"));
+        map.put("bank_type", m.get("bank_type"));
+        map.put("cash_fee", m.get("cash_fee"));
+        map.put("fee_type", m.get("fee_type"));
+        map.put("is_subscribe", m.get("is_subscribe"));
+        map.put("mch_id", m.get("mch_id"));
+        map.put("nonce_str", m.get("nonce_str"));
+        map.put("openid", m.get("openid"));
+        map.put("out_trade_no", m.get("out_trade_no"));
+        map.put("result_code", m.get("result_code"));
+        map.put("return_code", m.get("return_code"));
+        map.put("time_end", m.get("time_end"));
+        map.put("total_fee", m.get("total_fee"));
+        map.put("trade_type", m.get("trade_type"));
+        map.put("transaction_id", m.get("transaction_id"));
+
+        String sign = WeChatUtils.createSign(map, weChatConfigProperties.getPartnerkey());
+        return sign;
+    }
 }
