@@ -4,7 +4,7 @@ package com.shuren.pojo.resume;
  * Created by 董帮辉 on 2017-5-20.
  * 用户扩展信息
  */
-public class UserExtandinfo {
+public class UserExtendinfo {
 
     private Integer id;
 

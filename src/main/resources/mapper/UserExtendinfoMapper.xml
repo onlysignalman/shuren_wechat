@@ -2,4 +2,53 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shuren.mapper.resume.UserExtendinfoMapper">
 
+	<insert id="add" parameterType="UserBaseinfo" useGeneratedKeys="true" keyProperty="userId">
+		INSERT INTO user_extandinfo
+			(userId, logo, score, realName, sex, 
+			 birthday, tall, weight, nation, politics,
+			 marry, contactPhone, contactEmail, idCard, residence, 
+			 location, nowStatus, wishType, wishBusiness, wishJob, 
+			 wishLocation, wishSalary, collegeName, specialities, graduationTime, 
+			 collegeType, diplomas, degree, classDuty, studentDuty, 
+			 scholarship, scholarshipRange, awards, awardsRange, awardsDes, 
+			 internProject, internTime, internDuty, internDesc, hobby, 
+			 honor, assessment, createTimeStamp, lastUpdateTimeStamp, isDel)
+	    values
+	    	(#{userId}, #{logo}, #{score}, #{realName}, #{sex}, 
+			 #{birthday}, #{tall}, #{weight}, #{nation}, #{politics},
+			 #{marry}, #{contactPhone}, #{contactEmail}, #{idCard}, #{residence}, 
+			 #{location}, #{nowStatus}, #{wishType}, #{wishBusiness}, #{wishJob}, 
+			 #{wishLocation}, #{wishSalary}, #{collegeName}, #{specialities}, #{graduationTime}, 
+			 #{collegeType}, #{diplomas}, #{degree}, #{classDuty}, #{studentDuty}, 
+			 #{scholarship}, #{scholarshipRange}, #{awards}, #{awardsRange}, #{awardsDes}, 
+			 #{internProject}, #{internTime}, #{internDuty}, #{internDesc}, #{hobby}, 
+			 #{honor}, #{assessment}, unix_timestamp(now()), unix_timestamp(now()), 0)
+	</insert>
+	
+	<select id="getOne" parameterType="java.util.Map" resultType="UserExtendinfo">
+		SELECT 
+			* 
+		FROM 
+			user_extandinfo 
+		WHERE 
+			userId = #{userId}
+	</select>
+
+	<update id="update" parameterType="UserExtendinfo">
+		UPDATE 
+			user_extandinfo 
+		SET 
+			 logo=#{logo}, score=#{score}, realName=#{realName}, sex=#{sex},birthday=#{birthday},  
+			 tall=#{tall}, weight=#{weight}, nation=#{nation}, politics=#{politics},marry=#{marry}, 
+			 contactPhone=#{contactPhone}, contactEmail=#{contactEmail}, idCard=#{idCard}, residence=#{residence},location=#{location}, 
+			 nowStatus=#{nowStatus}, wishType=#{wishType}, wishBusiness=#{wishBusiness}, wishJob=#{wishJob},wishLocation=#{wishLocation},  
+			 wishSalary=#{wishSalary}, collegeName=#{collegeName}, specialities=#{specialities}, graduationTime=#{graduationTime},collegeType=#{collegeType},  
+			 diplomas=#{diplomas}, degree=#{degree}, classDuty=#{classDuty}, studentDuty=#{studentDuty},scholarship=#{scholarship},  
+			 scholarshipRange=#{scholarshipRange}, awards=#{awards}, awardsRange=#{awardsRange}, awardsDes=#{awardsDes},internProject=#{internProject},  
+			 internTime=#{internTime}, internDuty=#{internDuty}, internDesc=#{internDesc}, hobby=#{hobby}, honor=#{honor},  
+			 assessment=#{assessment}, lastUpdateTimeStamp=unix_timestamp(now()) 
+		WHERE 
+			userId = #{userId}
+	</update>
+
 </mapper>

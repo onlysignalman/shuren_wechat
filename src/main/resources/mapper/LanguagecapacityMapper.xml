@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shuren.mapper.resume.LanguagecapacityMapper">
+
+	<resultMap type="LanguageCapacity" id="LanguageCapacitys"></resultMap>
+
+	<insert id="add" parameterType="LanguageCapacity" useGeneratedKeys="true" keyProperty="userId">
+		INSERT INTO language_capacity
+			(userId, language, readAndWrite, listenAndSpeak, index, 
+			 createTimeStamp, lastUpdateStamp, isDel)
+	    values
+	    	(#{userId}, #{language}, #{readAndWrite}, #{listenAndSpeak}, #{index}, 
+			 unix_timestamp(now()), unix_timestamp(now()), 0)
+	</insert>
+	
+	<select id="getLanguagesCount" parameterType="java.util.Map" resultType="java.lang.Long">
+		SELECT 
+			COUNT(*) 
+		FROM 
+			language_capacity 
+		WHERE 
+			userId = #{userId}
+	</select>
+	
+	<select id="getLanguages" parameterType="java.util.Map" resultMap="LanguageCapacitys">
+		SELECT 
+			* 
+		FROM 
+			language_capacity 
+		WHERE 
+			userId = #{userId}
+	</select>
+
+	<update id="update" parameterType="LanguageCapacity">
+		UPDATE 
+			language_capacity 
+		SET 
+			 language=#{language}, readAndWrite=#{readAndWrite}, listenAndSpeak=#{listenAndSpeak}, index=#{index}, lastUpdateStamp=unix_timestamp(now()) 
+		WHERE 
+			id = #{id}
+	</update>
+
+</mapper>

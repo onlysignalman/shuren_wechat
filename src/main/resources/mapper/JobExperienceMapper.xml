@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shuren.mapper.resume.JobExperienceMapper">
+
+	<resultMap type="JobExperience" id="JobExperiences"></resultMap>
+
+	<insert id="add" parameterType="JobExperience" useGeneratedKeys="true" keyProperty="userId">
+		INSERT INTO job_experience
+			(userId, companyName, companyType, companyScale, businessType, 
+			 jobName, jobTime, salary, jobContent, index,
+			 createTimeStamp, lastUpdateStamp, isDel)
+	    values
+	    	(#{userId}, #{companyName}, #{companyType}, #{companyScale}, #{businessType}, 
+			 #{jobName}, #{jobTime}, #{salary}, #{jobContent}, #{index},
+			 unix_timestamp(now()), unix_timestamp(now()), 0)
+	</insert>
+	
+	<select id="getJobsCount" parameterType="java.util.Map" resultType="java.lang.Long">
+		SELECT 
+			COUNT(*) 
+		FROM 
+			job_experience 
+		WHERE 
+			userId = #{userId}
+	</select>
+	
+	<select id="getJobs" parameterType="java.util.Map" resultMap="JobExperiences">
+		SELECT 
+			* 
+		FROM 
+			job_experience 
+		WHERE 
+			userId = #{userId}
+	</select>
+
+	<update id="update" parameterType="JobExperiences">
+		UPDATE 
+			job_experience 
+		SET 
+			 companyName=#{companyName}, companyType=#{companyType}, companyScale=#{companyScale}, businessType=#{businessType}, jobName=#{jobName}, 
+			 jobTime=#{jobTime}, salary=#{salary}, jobContent=#{jobContent}, index=#{index}, lastUpdateStamp=unix_timestamp(now()) 
+		WHERE 
+			id = #{id}
+	</update>
+
+</mapper>
