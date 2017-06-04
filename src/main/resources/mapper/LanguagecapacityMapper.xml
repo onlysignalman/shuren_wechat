@@ -2,9 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shuren.mapper.resume.LanguagecapacityMapper">
 
-	<resultMap type="LanguageCapacity" id="LanguageCapacitys"></resultMap>
-
-	<insert id="add" parameterType="LanguageCapacity" useGeneratedKeys="true" keyProperty="userId">
+	<insert id="add" parameterType="LanguageCapacity" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO language_capacity
 			(userId, language, readAndWrite, listenAndSpeak, index, 
 			 createTimeStamp, lastUpdateStamp, isDel)
@@ -22,7 +20,7 @@
 			userId = #{userId}
 	</select>
 	
-	<select id="getLanguages" parameterType="java.util.Map" resultMap="LanguageCapacitys">
+	<select id="getLanguages" parameterType="java.util.Map" resultType="LanguageCapacity">
 		SELECT 
 			* 
 		FROM 

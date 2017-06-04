@@ -2,9 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shuren.mapper.resume.JobExperienceMapper">
 
-	<resultMap type="JobExperience" id="JobExperiences"></resultMap>
-
-	<insert id="add" parameterType="JobExperience" useGeneratedKeys="true" keyProperty="userId">
+	<insert id="add" parameterType="JobExperience" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO job_experience
 			(userId, companyName, companyType, companyScale, businessType, 
 			 jobName, jobTime, salary, jobContent, index,
@@ -24,7 +22,7 @@
 			userId = #{userId}
 	</select>
 	
-	<select id="getJobs" parameterType="java.util.Map" resultMap="JobExperiences">
+	<select id="getJobs" parameterType="java.util.Map" resultType="JobExperience">
 		SELECT 
 			* 
 		FROM 
@@ -33,7 +31,7 @@
 			userId = #{userId}
 	</select>
 
-	<update id="update" parameterType="JobExperiences">
+	<update id="update" parameterType="JobExperience">
 		UPDATE 
 			job_experience 
 		SET 

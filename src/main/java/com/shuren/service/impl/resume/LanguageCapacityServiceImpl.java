@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.shuren.bean.resume.BaseReturns;
 import com.shuren.bean.resume.ListReturns;
@@ -16,6 +17,7 @@ import com.shuren.service.resume.LanguageCapacityService;
 /**
  * Created by 董帮辉 on 2017-5-18.
  */
+@Service
 public class LanguageCapacityServiceImpl implements LanguageCapacityService {
 
 	@Autowired
