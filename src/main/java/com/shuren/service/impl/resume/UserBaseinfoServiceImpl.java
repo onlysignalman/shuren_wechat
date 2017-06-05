@@ -8,11 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shuren.bean.resume.BaseReturns;
+import com.shuren.bean.resume.ErrorInfos;
 import com.shuren.bean.resume.ListReturns;
 import com.shuren.bean.resume.ModelReturns;
+import com.shuren.mapper.resume.JobExperienceMapper;
+import com.shuren.mapper.resume.LanguageCapacityMapper;
 import com.shuren.mapper.resume.UserBaseinfoMapper;
-import com.shuren.bean.resume.ErrorInfos;
+import com.shuren.mapper.resume.UserExtendinfoMapper;
+import com.shuren.pojo.resume.JobExperience;
+import com.shuren.pojo.resume.LanguageCapacity;
 import com.shuren.pojo.resume.UserBaseinfo;
+import com.shuren.pojo.resume.UserExtendinfo;
 import com.shuren.service.resume.MsgService;
 import com.shuren.service.resume.UserBaseinfoService;
 import com.shuren.utils.wechat.SecurityUtils;
@@ -25,6 +31,15 @@ public class UserBaseinfoServiceImpl implements UserBaseinfoService {
 
 	@Autowired
 	private UserBaseinfoMapper userBaseinfoMapper;
+	
+	@Autowired
+	private UserExtendinfoMapper userExtendinfoMapper;
+	
+	@Autowired
+	private JobExperienceMapper jobExperienceMapper;
+	
+	@Autowired
+	private LanguageCapacityMapper languageCapacityMapper;
 	
 	@Autowired
 	private MsgService msgService;
@@ -71,8 +86,107 @@ public class UserBaseinfoServiceImpl implements UserBaseinfoService {
 		}
 		//登录成功
 		userBaseinfo = userBaseinfoMapper.login(userBaseinfo);
+		//计算分数
+		int score = 0;
+		score = calcScore(userBaseinfo.getUserId());
+		userBaseinfo.setScore(score);
 		returns.setModel(userBaseinfo);
 		return returns;
+	}
+
+	private int calcScore(Integer userId) {
+		// TODO Auto-generated method stub
+		int score = 0;
+		Map<String, String> map = new HashMap<>();
+		map.put("userId", userId.toString());
+		//1.用户扩展信息计算 TOTAL：80
+		UserExtendinfo userExtendinfo = userExtendinfoMapper.getOne(map);
+		//2.用户语言能力信息 TOTAL：10
+		List<JobExperience> jobs = jobExperienceMapper.getJobs(map);
+		//3.用户工作经历信息 TOTAL：10
+		List<LanguageCapacity> languages = languageCapacityMapper.getLanguages(map);
+		if(userExtendinfo != null){
+			score += userExtendinfo.getLogo() == null? 0 : 2;
+			score += userExtendinfo.getRealName() == null? 0 : 2;
+			score += userExtendinfo.getSex() == null? 0 : 2;
+			score += userExtendinfo.getBirthday() == null? 0 : 2;
+			score += userExtendinfo.getTall() == null? 0 : 2;
+			
+			score += userExtendinfo.getWeight() == null? 0 : 2;
+			score += userExtendinfo.getNation() == null? 0 : 2;
+			score += userExtendinfo.getPolitics() == null? 0 : 2;
+			score += userExtendinfo.getMarry() == null? 0 : 2;
+			score += userExtendinfo.getContactPhone() == null? 0 : 2;
+			
+			score += userExtendinfo.getContactEmail() == null? 0 : 2;
+			score += userExtendinfo.getIdCard() == null? 0 : 2;
+			score += userExtendinfo.getResidence() == null? 0 : 2;
+			score += userExtendinfo.getLocation() == null? 0 : 2;
+			score += userExtendinfo.getNowStatus() == null? 0 : 2;
+			
+			score += userExtendinfo.getWishType() == null? 0 : 2;
+			score += userExtendinfo.getWishBusiness() == null? 0 : 2;
+			score += userExtendinfo.getWishJob() == null? 0 : 2;
+			score += userExtendinfo.getWishLocation() == null? 0 : 2;
+			score += userExtendinfo.getWishSalary() == null? 0 : 2;
+
+			score += userExtendinfo.getCollegeName() == null? 0 : 2;
+			score += userExtendinfo.getSpecialities() == null? 0 : 2;
+			score += userExtendinfo.getGraduationTime() == null? 0 : 2;
+			score += userExtendinfo.getCollegeType() == null? 0 : 2;
+			score += userExtendinfo.getDiplomas() == null? 0 : 2;
+			
+			score += userExtendinfo.getDegree() == null? 0 : 2;
+			score += userExtendinfo.getClassDuty() == null? 0 : 2;
+			score += userExtendinfo.getStudentDuty() == null? 0 : 2;
+			score += userExtendinfo.getScholarship() == null? 0 : 2;
+			score += userExtendinfo.getScholarshipRange() == null? 0 : 2;
+			
+			score += userExtendinfo.getAwards() == null? 0 : 2;
+			score += userExtendinfo.getAwardsRange() == null? 0 : 2;
+			score += userExtendinfo.getAwardsDes() == null? 0 : 2;
+			score += userExtendinfo.getInternProject() == null? 0 : 2;
+			score += userExtendinfo.getInternTime() == null? 0 : 2;
+			
+			score += userExtendinfo.getInternDuty() == null? 0 : 2;
+			score += userExtendinfo.getInternDesc() == null? 0 : 2;
+			score += userExtendinfo.getHobby() == null? 0 : 2;
+			score += userExtendinfo.getHonor() == null? 0 : 2;
+			score += userExtendinfo.getAssessment() == null? 0 : 2;
+		}
+		if(jobs != null && jobs.size() > 0){
+			if(jobs.size() > 1){
+				score += 10;
+			}else{
+				JobExperience job = jobs.get(0);
+				if(job != null){
+					score += job.getCompanyName() == null? 0 : 1;
+					score += job.getCompanyType() == null? 0 : 1;
+					score += job.getCompanyScale() == null? 0 : 1;
+					score += job.getBusinessType() == null? 0 : 1;
+					score += job.getJobName() == null? 0 : 1;
+					
+					score += job.getJobTime() == null? 0 : 1;
+					score += job.getSalary() == null? 0 : 2;
+					score += job.getJobContent() == null? 0 : 2;
+				}
+			}
+		}
+		if(languages != null && languages.size() > 0){
+			if(languages.size() > 1){
+				score += 10;
+			}else{
+				LanguageCapacity language = languages.get(0);
+				if(language != null){
+					score += language.getLanguage() == null? 0 : 4;
+					score += language.getReadAndWrite() == null? 0 : 3;
+					score += language.getListenAndSpeak() == null? 0 : 3;
+				}
+			}
+		}
+		map.put("score", String.valueOf(score));
+		userBaseinfoMapper.update(map);
+		return score;
 	}
 
 	@Override
@@ -111,6 +225,15 @@ public class UserBaseinfoServiceImpl implements UserBaseinfoService {
 		}*/
 		userBaseinfo.setPassword(SecurityUtils.MD5(userBaseinfo.getPassword()));
 		userBaseinfoMapper.forget(userBaseinfo);
+		return returns;
+	}
+
+	@Override
+	public ModelReturns<String> getScore(Integer userId) {
+		// TODO Auto-generated method stub
+		ModelReturns<String> returns = new ModelReturns<>();
+		int calcScore = calcScore(userId);
+		returns.setModel(String.valueOf(calcScore));
 		return returns;
 	}
 }

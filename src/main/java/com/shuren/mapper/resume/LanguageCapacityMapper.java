@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.shuren.pojo.resume.LanguageCapacity;
 
-public interface LanguagecapacityMapper {
+public interface LanguageCapacityMapper {
 
 	Long add(LanguageCapacity languageCapacity);
 

@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.shuren.bean.resume.BaseReturns;
 import com.shuren.bean.resume.ListReturns;
-import com.shuren.mapper.resume.LanguagecapacityMapper;
+import com.shuren.mapper.resume.LanguageCapacityMapper;
 import com.shuren.pojo.resume.JobExperience;
 import com.shuren.pojo.resume.LanguageCapacity;
 import com.shuren.service.resume.LanguageCapacityService;
@@ -16,10 +17,11 @@ import com.shuren.service.resume.LanguageCapacityService;
 /**
  * Created by 董帮辉 on 2017-5-18.
  */
+@Service
 public class LanguageCapacityServiceImpl implements LanguageCapacityService {
 
 	@Autowired
-	private LanguagecapacityMapper languagecapacityMapper;
+	private LanguageCapacityMapper languagecapacityMapper;
 	
 	@Override
 	public BaseReturns add(LanguageCapacity languageCapacity) {

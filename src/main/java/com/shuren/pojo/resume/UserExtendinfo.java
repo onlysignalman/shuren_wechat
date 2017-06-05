@@ -14,9 +14,6 @@ public class UserExtendinfo {
     //用户头像地址
     private String logo;
 
-    //用户信息完善分数
-    private Integer score;
-
     //真实姓名
     private String realName;
 
@@ -165,14 +162,6 @@ public class UserExtendinfo {
 
     public void setLogo(String logo) {
         this.logo = logo;
-    }
-
-    public Integer getScore() {
-        return score;
-    }
-
-    public void setScore(Integer score) {
-        this.score = score;
     }
 
     public String getRealName() {
