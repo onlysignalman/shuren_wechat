@@ -4,10 +4,10 @@
     <insert id="register" parameterType="UserBaseinfo" useGeneratedKeys="true" keyProperty="userId">
 		INSERT INTO user_baseinfo
 			(openId, nickName, mobile, email, password, 
-			 credit, logo, createTimeStamp, lastUpdateTimeStamp, isDel)
+			 credit, logo, score, createTimeStamp, lastUpdateTimeStamp, isDel)
 	    values
 	    	(#{openId}, #{nickName}, #{mobile}, #{email}, #{password}, 
-	    	0, #{logo}, unix_timestamp(now()), unix_timestamp(now()), 0)
+	    	0, #{logo}, 0, unix_timestamp(now()), unix_timestamp(now()), 0)
 	</insert>
 	
 	<select id="login" parameterType="Map" resultType="UserBaseinfo">
@@ -44,5 +44,35 @@
 			password = #{password}, lastUpdateTimeStamp = unix_timestamp(now()) 
 		WHERE 
 			mobile = #{mobile}
+	</update>
+	
+	<update id="update" parameterType="java.util.Map">
+		UPDATE 
+			user_baseinfo 
+		SET 
+			<if test="openId !=null">
+				openId = #{openId},
+			</if>
+			<if test="nickName !=null">
+				nickName = #{nickName},
+			</if>
+			<if test="mobile !=null">
+				mobile = #{mobile},
+			</if>
+			<if test="email !=null">
+				email = #{email},
+			</if>
+			<if test="credit !=null">
+				credit = #{credit},
+			</if>
+			<if test="logo !=null">
+				logo = #{logo},
+			</if>
+			<if test="score !=null">
+				score = #{score},
+			</if>
+			lastUpdateTimeStamp = unix_timestamp(now()) 
+		WHERE 
+			userId = #{userId}
 	</update>
 </mapper>

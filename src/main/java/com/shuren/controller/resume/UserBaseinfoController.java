@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shuren.bean.resume.BaseReturns;
+import com.shuren.bean.resume.ErrorInfos;
 import com.shuren.bean.resume.ModelReturns;
 import com.shuren.pojo.resume.UserBaseinfo;
 import com.shuren.service.resume.UserBaseinfoService;
@@ -58,6 +59,28 @@ public class UserBaseinfoController extends BaseController{
 	public ResponseEntity<BaseReturns> forget(@ModelAttribute UserBaseinfo userBaseinfo,
 			@RequestParam(value="msg", required=true)String msg){
 		BaseReturns returns = userBaseinfoService.forget(userBaseinfo, msg);
+		return ResponseEntity.ok(returns);
+	}
+	
+	/**
+	 * 获得分数
+	 */
+	@RequestMapping("/getScore")
+	public ResponseEntity<ModelReturns<String>> getScore(HttpSession session){
+		ModelReturns<String> returns = new ModelReturns<String>();
+		//登录判断
+		Integer userId = null;
+		Object userBaseinfo = session.getAttribute("user");
+		if (userBaseinfo != null && userBaseinfo instanceof UserBaseinfo){
+			UserBaseinfo user = (UserBaseinfo)userBaseinfo;
+			userId = user.getUserId();
+		}
+		if(userId == null || userId <= 0){
+			returns.setError(ErrorInfos.YONGHUWEIDENGLU.getError());
+			returns.setStatus(ErrorInfos.YONGHUWEIDENGLU.getStatus());
+			return ResponseEntity.ok(returns);
+		}
+		returns = userBaseinfoService.getScore(userId);
 		return ResponseEntity.ok(returns);
 	}
 }

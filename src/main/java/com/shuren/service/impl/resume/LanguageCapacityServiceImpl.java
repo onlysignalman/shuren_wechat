@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.shuren.bean.resume.BaseReturns;
 import com.shuren.bean.resume.ListReturns;
-import com.shuren.mapper.resume.LanguagecapacityMapper;
+import com.shuren.mapper.resume.LanguageCapacityMapper;
 import com.shuren.pojo.resume.JobExperience;
 import com.shuren.pojo.resume.LanguageCapacity;
 import com.shuren.service.resume.LanguageCapacityService;
@@ -21,7 +21,7 @@ import com.shuren.service.resume.LanguageCapacityService;
 public class LanguageCapacityServiceImpl implements LanguageCapacityService {
 
 	@Autowired
-	private LanguagecapacityMapper languagecapacityMapper;
+	private LanguageCapacityMapper languagecapacityMapper;
 	
 	@Override
 	public BaseReturns add(LanguageCapacity languageCapacity) {

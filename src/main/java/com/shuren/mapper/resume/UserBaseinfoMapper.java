@@ -16,5 +16,7 @@ public interface UserBaseinfoMapper {
 	List<Map<String, Object>> queryList(Map<String, Object> params);
 	
 	void forget(UserBaseinfo userBaseinfo);
+
+	void update(Map<String, String> map);
 	
 }

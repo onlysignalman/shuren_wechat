@@ -40,4 +40,11 @@ public interface UserBaseinfoService {
 	 * @return
 	 */
 	BaseReturns forget(UserBaseinfo userBaseinfo, String validate);
+
+	/**
+	 * 获取分数
+	 * @param userId
+	 * @return
+	 */
+	ModelReturns<String> getScore(Integer userId);
 }
