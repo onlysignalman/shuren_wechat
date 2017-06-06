@@ -8,10 +8,7 @@ import javax.activation.FileDataSource;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import javax.mail.internet.*;
 import java.util.Properties;
 
 /**
@@ -20,7 +17,6 @@ import java.util.Properties;
 public class MailUtils {
 
     public void sendAttachMial(String filePath) throws Exception {
-
 
         Properties prop = new Properties();
         prop.setProperty("mail.host", "smtp.shurenyude.com");
@@ -61,7 +57,7 @@ public class MailUtils {
         MimeBodyPart attach = new MimeBodyPart();
         DataHandler dh = new DataHandler(new FileDataSource(filePath));
         attach.setDataHandler(dh);
-        attach.setFileName(dh.getName()); //
+        attach.setFileName(MimeUtility.encodeWord(dh.getName())); //
 
         // 创建容器描述数据关系
         MimeMultipart mp = new MimeMultipart();
