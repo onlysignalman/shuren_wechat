@@ -3,7 +3,7 @@
 <mapper namespace="com.shuren.mapper.resume.UserExtendinfoMapper">
 
 	<insert id="add" parameterType="UserBaseinfo" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO user_extandinfo
+		INSERT INTO user_extendinfo
 			(userId, logo, score, realName, sex, 
 			 birthday, tall, weight, nation, politics,
 			 marry, contactPhone, contactEmail, idCard, residence, 
@@ -29,14 +29,14 @@
 		SELECT 
 			* 
 		FROM 
-			user_extandinfo 
+			user_extendinfo 
 		WHERE 
 			userId = #{userId}
 	</select>
 
 	<update id="update" parameterType="UserExtendinfo">
 		UPDATE 
-			user_extandinfo 
+			user_extendinfo 
 		SET 
 			 logo=#{logo}, score=#{score}, realName=#{realName}, sex=#{sex},birthday=#{birthday},  
 			 tall=#{tall}, weight=#{weight}, nation=#{nation}, politics=#{politics},marry=#{marry}, 

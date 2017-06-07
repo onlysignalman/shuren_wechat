@@ -3,6 +3,8 @@ package com.shuren.controlller.wechat;
 import com.shuren.bean.wechat.pay.PublicPayRequestBean;
 import com.shuren.bean.wechat.pay.PublicPayResponseBean;
 import com.shuren.constants.wechat.WeChatConfigProperties;
+import com.shuren.pojo.wechat.Order;
+import com.shuren.service.wechat.OrderService;
 import com.shuren.service.wechat.PayService;
 import com.shuren.utils.wechat.DataShapeConvertUtils;
 import com.shuren.utils.wechat.WeChatUtils;
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import scala.Int;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,6 +36,9 @@ public class PayController {
 
     @Autowired
     private WeChatConfigProperties weChatConfigProperties;
+
+    @Autowired
+    private OrderService orderService;
 
     //微信公众号支付
     @RequestMapping(value = "publicPay", method = RequestMethod.GET)
@@ -54,7 +61,8 @@ public class PayController {
 
     //微信回调
     @RequestMapping(value = "notify", method = RequestMethod.POST,produces = "application/xml;charset=UTF-8")
-    public ResponseEntity<String> notify(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public String notify(HttpServletRequest request, HttpServletResponse response) {
         try {
             String inputLine;
             String notityXml = "";
@@ -68,18 +76,28 @@ public class PayController {
 
             //校验成功
             if(sign.equals(m.get("sign"))){
-
+                Order order = new Order();
+                order.setMoney(Integer.valueOf(m.get("total_fee")));
+                order.setOpenId(m.get("openid"));
+                order.setOrderId(m.get("out_trade_no"));
+                order.setPaymentTime(Long.valueOf(m.get("time_end")));
+                order.setPaymentType(m.get("trade_type"));
                 //业务结果
                 String resultCode = m.get("result_code");
-                if ("SUCCESS".equals(resultCode)){
-                    //调用业务方法处理订单业务
-
+                if ("SUCCESS".equals(resultCode)){//支付成功
                     //根据orderId查询订单表是否改存在改记录
-
+                    Integer i = this.orderService.queryCountByOderId(order.getOrderId());
                     //如果不存在就插入订单信息
-
-
-
+                    resXml = "<xml>" + "<return_code><![CDATA[SUCCESS]]></return_code>"
+                            + "<return_msg><![CDATA[OK]]></return_msg>" + "</xml> ";
+                    if(i==0){
+                        this.orderService.save(order);
+                        //更新业务 TODO
+                    }else{
+                        return resXml;
+                    }
+                    // 支付成功
+                    return  resXml;
                 }
 
             }
