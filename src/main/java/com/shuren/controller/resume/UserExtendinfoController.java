@@ -1,7 +1,5 @@
 package com.shuren.controller.resume;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,16 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shuren.bean.resume.BaseReturns;
 import com.shuren.bean.resume.ErrorInfos;
 import com.shuren.bean.resume.ModelReturns;
-import com.shuren.pojo.resume.JobExperience;
-import com.shuren.pojo.resume.LanguageCapacity;
 import com.shuren.pojo.resume.UserBaseinfo;
 import com.shuren.pojo.resume.UserExtendinfo;
-import com.shuren.service.resume.UserBaseinfoService;
 import com.shuren.service.resume.UserExtendinfoService;
 
 /**
@@ -79,6 +73,7 @@ public class UserExtendinfoController extends BaseController{
 	public ResponseEntity<ModelReturns<UserExtendinfo>> getOne(HttpSession session){
 		ModelReturns<UserExtendinfo> returns = new ModelReturns<UserExtendinfo>();
 		Integer userId = null;
+		userId = 1;
 		//登录判断
 		Object userBaseinfo = session.getAttribute("user");
 		if (userBaseinfo != null && userBaseinfo instanceof UserBaseinfo){

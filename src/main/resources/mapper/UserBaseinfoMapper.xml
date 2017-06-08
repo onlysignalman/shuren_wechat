@@ -49,7 +49,7 @@
 	<update id="update" parameterType="java.util.Map">
 		UPDATE 
 			user_baseinfo 
-		SET 
+		<set>
 			<if test="openId !=null">
 				openId = #{openId},
 			</if>
@@ -72,7 +72,9 @@
 				score = #{score},
 			</if>
 			lastUpdateTimeStamp = unix_timestamp(now()) 
-		WHERE 
+		</set>
+		<where>
 			userId = #{userId}
+		</where>
 	</update>
 </mapper>
