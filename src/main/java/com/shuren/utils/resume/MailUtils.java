@@ -16,10 +16,16 @@ import java.util.Properties;
  */
 public class MailUtils {
 
-    public void sendAttachMial(String filePath) throws Exception {
+    /**
+     * 发送邮件
+     * @param filePath 发送附件的物理路径
+     * @param receiveMailAddress 接收方的邮件地址
+     * @throws Exception
+     */
+    public static void sendAttachMial(String filePath, String receiveMailAddress) throws Exception {
 
         Properties prop = new Properties();
-        prop.setProperty("mail.host", "smtp.shurenyude.com");
+        prop.setProperty("mail.host", "smtp.163.com");
         prop.setProperty("mail.transport.protocol", "smtp");
         prop.setProperty("mail.smtp.auth", "true");
 
@@ -30,22 +36,22 @@ public class MailUtils {
         // 2、通过session得到transport对象
         Transport ts = session.getTransport();
         // 3、连上邮件服务器
-        ts.connect("smtp.shurenyude.com", "postmaster", "Shurenyude88");
+        ts.connect("smtp.163.com", "18756162372", "340822abc");
         // 4、创建邮件
-        Message message = createAttachMail(session,filePath);
+        Message message = createAttachMail(session,filePath,receiveMailAddress);
         // 5、发送邮件
         ts.sendMessage(message, message.getAllRecipients());
         ts.close();
     }
 
-    public static MimeMessage createAttachMail(Session session,String filePath) throws Exception {
+    public static MimeMessage createAttachMail(Session session,String filePath,String receiveMailAddress) throws Exception {
         MimeMessage message = new MimeMessage(session);
 
         // 设置邮件的基本信息
         // 发件人
-        message.setFrom(new InternetAddress("postmaster@shurenyude.com"));
+        message.setFrom(new InternetAddress("18756162372@163.com"));
         // 收件人
-        message.setRecipient(Message.RecipientType.TO, new InternetAddress("1138756325@qq.com"));
+        message.setRecipient(Message.RecipientType.TO, new InternetAddress(receiveMailAddress));
         // 邮件标题
         message.setSubject("JavaMail邮件发送测试");
 
