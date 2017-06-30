@@ -1,5 +1,6 @@
 package com.shuren;
 
+import com.shuren.service.resume.EmailService;
 import com.shuren.utils.wechat.DataShapeConvertUtils;
 import org.assertj.core.util.Compatibility;
 import org.dom4j.DocumentException;
@@ -24,6 +25,9 @@ public class ShurenWechatApplicationTests {
     @Autowired
     private MenuService menuService;
 
+    @Autowired
+    private EmailService emailService;
+
     @Test
     public void createMenu() throws IOException {
         Integer errcode = menuService.createMenu();
@@ -39,7 +43,8 @@ public class ShurenWechatApplicationTests {
     public void testParseXml(){
 
         try {
-            String xml = "<xml>\n" +
+            String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+                    "     <dat>"+
                     "    <appid>wx2421b1c4370ec43b</appid>\n" +
                     "    <attach>支付测试</attach>\n" +
                     "    <body>JSAPI支付测试</body>\n" +
@@ -53,7 +58,7 @@ public class ShurenWechatApplicationTests {
                     "    <total_fee>1</total_fee>\n" +
                     "    <trade_type>JSAPI</trade_type>\n" +
                     "    <sign>0CB01533B8C1EF103065174F50BCA001</sign>\n" +
-                    " </xml> ";
+                    "    </dat>";
             Map<String, String> stringStringMap = DataShapeConvertUtils.xmlToMap(xml);
             System.out.println(stringStringMap);
         } catch (IOException e) {
@@ -61,7 +66,10 @@ public class ShurenWechatApplicationTests {
         } catch (DocumentException e) {
             e.printStackTrace();
         }
+    }
 
-
+    @Test
+    public void testEmail(){
+        emailService.SendAttachMail("1138756325@qq.com","D://树仁接口文档.docx");
     }
 }

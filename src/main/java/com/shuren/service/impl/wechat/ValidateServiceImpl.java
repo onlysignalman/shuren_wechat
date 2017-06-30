@@ -14,7 +14,7 @@ import java.util.Arrays;
 @Service("validateService")
 public class ValidateServiceImpl implements ValidateService {
 
-    private static final String token = "sheshu";
+    private static final String token = "shurenjiaoyu121345";
 
     @Override
     public String checkSignature(WeChat weChat) {

@@ -37,21 +37,24 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public Menu getMenu(){
 
+        //获取AppId
+        String appId = weChatConfigProperties.getAppId();
+
         //获取服务器地址
         String serverUrl = weChatConfigProperties.getServerUrl();
         
         //获取微信视图地址
-        String clickToUrl = weChatConfigProperties.getClickToUrl();
+        String clickToUrl = weChatConfigProperties.getClickToUrl().replace("APPID",appId);
 
         //二级视图菜单
         ViewButton but11 = new ViewButton();
         but11.setName("我的首页");
         but11.setType("view");
-        but11.setUrl("http://www.baidu.com");
+        but11.setUrl(clickToUrl.replace("REDIRECT_URI",serverUrl+"/login.html"));
         ViewButton but12 = new ViewButton();
         but12.setName("简历制作");
         but12.setType("view");
-        but12.setUrl("http://www.baidu.com");
+        but12.setUrl(clickToUrl.replace("REDIRECT_URI",serverUrl+"/jljldemo.html"));
         ViewButton but13 = new ViewButton();
         but13.setName("联系客服");
         but13.setType("view");
@@ -59,7 +62,7 @@ public class MenuServiceImpl implements MenuService {
         ViewButton but21 = new ViewButton();
         but21.setName("我的测评");
         but21.setType("view");
-        but21.setUrl("http://www.baidu.com");
+        but21.setUrl(clickToUrl.replace("REDIRECT_URI",serverUrl+"/myTest.html"));
         ViewButton but22 = new ViewButton();
         but22.setName("职业潜力测评");
         but22.setType("view");
@@ -75,7 +78,7 @@ public class MenuServiceImpl implements MenuService {
         ViewButton but31 = new ViewButton();
         but31.setName("招聘信息");
         but31.setType("view");
-        but31.setUrl("http://www.baidu.com");
+        but31.setUrl(clickToUrl.replace("REDIRECT_URI",serverUrl+"/zparticle.html"));
         ViewButton but32 = new ViewButton();
         but32.setName("劳资咨询");
         but32.setType("view");
