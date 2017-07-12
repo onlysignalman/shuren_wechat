@@ -1,6 +1,7 @@
 package com.shuren;
 
 import com.github.pagehelper.PageHelper;
+import com.shuren.interceptor.CommonInterceptor;
 import com.shuren.interceptor.LoginInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
@@ -61,5 +62,6 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor());
+        registry.addInterceptor(new CommonInterceptor()).addPathPatterns("/**");
     }
 }
