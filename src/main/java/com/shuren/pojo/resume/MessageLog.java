@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class MessageLog {
 
-    private Integer id;
+    private Long id;
 
     //手机号
     private String mobile;
