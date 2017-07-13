@@ -32,10 +32,24 @@
 	<update id="update" parameterType="LanguageCapacity">
 		UPDATE 
 			language_capacity 
-		SET 
-			 language=#{language}, readAndWrite=#{readAndWrite}, listenAndSpeak=#{listenAndSpeak}, index=#{index}, lastUpdateStamp=unix_timestamp(now()) 
-		WHERE 
+		<set>
+			<if test="language != null">
+				language=#{language},
+			</if>
+			<if test="readAndWrite != null">
+				AND readAndWrite=#{readAndWrite},
+			</if>
+			<if test="listenAndSpeak != null">
+				AND listenAndSpeak=#{listenAndSpeak},
+			</if>
+			<if test="index != null">
+				AND index=#{index},
+			</if>
+			AND lastUpdateStamp=unix_timestamp(now()) 
+		</set>
+		<where>
 			id = #{id}
+		</where>
 	</update>
 
 </mapper>

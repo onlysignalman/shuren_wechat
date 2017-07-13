@@ -1,9 +1,12 @@
 package com.shuren.pojo.resume;
 
+import lombok.Data;
+
 /**
  * Created by dbh on 2017/5/18.
  * 试题
  */
+@Data
 public class Item {
 
     private Integer id;

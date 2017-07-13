@@ -1,9 +1,12 @@
 package com.shuren.pojo.resume;
 
+import lombok.Data;
+
 /**
  * Created by dbh on 2017/5/17.
  * 用户基础信息
  */
+@Data
 public class UserBaseinfo {
 	
 	//自增id
@@ -41,109 +44,5 @@ public class UserBaseinfo {
 
     //最近修改时间
     private Long lastUpdateTimeStamp;
-
-	public Integer getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-
-	public String getOpenId() {
-		return openId;
-	}
-
-	public void setOpenId(String openId) {
-		this.openId = openId;
-	}
-
-	public String getNickName() {
-		return nickName;
-	}
-
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
-
-	public Integer getScore() {
-		return score;
-	}
-
-	public void setScore(Integer score) {
-		this.score = score;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Integer getIsDel() {
-		return isDel;
-	}
-
-	public void setIsDel(Integer isDel) {
-		this.isDel = isDel;
-	}
-
-	public Long getCreateTimeStamp() {
-		return createTimeStamp;
-	}
-
-	public void setCreateTimeStamp(Long createTimeStamp) {
-		this.createTimeStamp = createTimeStamp;
-	}
-
-	public Long getLastUpdateTimeStamp() {
-		return lastUpdateTimeStamp;
-	}
-
-	public void setLastUpdateTimeStamp(Long lastUpdateTimeStamp) {
-		this.lastUpdateTimeStamp = lastUpdateTimeStamp;
-	}
-
-	public Integer getCredit() {
-		return credit;
-	}
-
-	public void setCredit(Integer credit) {
-		this.credit = credit;
-	}
-
-	public String getLogo() {
-		return logo;
-	}
-
-	public void setLogo(String logo) {
-		this.logo = logo;
-	}
-
-	@Override
-	public String toString() {
-		return "UserBaseinfo [userId=" + userId + ", openId=" + openId + ", nickName=" + nickName + ", mobile=" + mobile
-				+ ", email=" + email + ", password=" + password + ", score=" + score + ", credit=" + credit + ", logo="
-				+ logo + ", isDel=" + isDel + ", createTimeStamp=" + createTimeStamp + ", lastUpdateTimeStamp="
-				+ lastUpdateTimeStamp + "]";
-	}
 
 }

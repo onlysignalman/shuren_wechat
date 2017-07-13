@@ -40,10 +40,17 @@
 	<update id="forget" parameterType="UserBaseinfo">
 		UPDATE 
 			user_baseinfo 
-		SET 
-			password = #{password}, lastUpdateTimeStamp = unix_timestamp(now()) 
-		WHERE 
+		<set>
+			<if test="password != null">
+				password = #{password}, 
+			</if>
+			<if test="lastUpdateTimeStamp != null">
+				AND lastUpdateTimeStamp = unix_timestamp(now()) 
+			</if>
+		</set>
+		<where>
 			mobile = #{mobile}
+		</where>
 	</update>
 	
 	<update id="update" parameterType="java.util.Map">
@@ -54,24 +61,24 @@
 				openId = #{openId},
 			</if>
 			<if test="nickName !=null">
-				nickName = #{nickName},
+				AND nickName = #{nickName},
 			</if>
 			<if test="mobile !=null">
-				mobile = #{mobile},
+				AND mobile = #{mobile},
 			</if>
 			<if test="email !=null">
-				email = #{email},
+				AND email = #{email},
 			</if>
 			<if test="credit !=null">
-				credit = #{credit},
+				AND credit = #{credit},
 			</if>
 			<if test="logo !=null">
-				logo = #{logo},
+				AND logo = #{logo},
 			</if>
 			<if test="score !=null">
-				score = #{score},
+				AND score = #{score},
 			</if>
-			lastUpdateTimeStamp = unix_timestamp(now()) 
+			AND lastUpdateTimeStamp = unix_timestamp(now()) 
 		</set>
 		<where>
 			userId = #{userId}

@@ -1,9 +1,12 @@
 package com.shuren.pojo.resume;
 
+import lombok.Data;
+
 /**
  * Created by dbh on 2017/5/18.
  * 积分流水
  */
+@Data
 public class CreditDetail {
 
     private Integer id;
@@ -28,68 +31,4 @@ public class CreditDetail {
 
     //逻辑删除
     private Integer isDel;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public Integer getBuyId() {
-        return buyId;
-    }
-
-    public void setBuyId(Integer buyId) {
-        this.buyId = buyId;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public Integer getAssTypeId() {
-        return assTypeId;
-    }
-
-    public void setAssTypeId(Integer assTypeId) {
-        this.assTypeId = assTypeId;
-    }
-
-    public Integer getAssId() {
-        return assId;
-    }
-
-    public void setAssId(Integer assId) {
-        this.assId = assId;
-    }
-
-    public Long getCreateTimeStamp() {
-        return createTimeStamp;
-    }
-
-    public void setCreateTimeStamp(Long createTimeStamp) {
-        this.createTimeStamp = createTimeStamp;
-    }
-
-    public Integer getIsDel() {
-        return isDel;
-    }
-
-    public void setIsDel(Integer isDel) {
-        this.isDel = isDel;
-    }
 }

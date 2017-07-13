@@ -1,9 +1,12 @@
 package com.shuren.pojo.resume;
 
+import lombok.Data;
+
 /**
  * Created by dbh on 2017/5/18.
  * 工作经验
  */
+@Data
 public class JobExperience {
 
     private Integer id;
@@ -46,116 +49,4 @@ public class JobExperience {
 
     //逻辑删除
     private Integer isDel;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public String getCompanyType() {
-        return companyType;
-    }
-
-    public void setCompanyType(String companyType) {
-        this.companyType = companyType;
-    }
-
-    public String getCompanyScale() {
-        return companyScale;
-    }
-
-    public void setCompanyScale(String companyScale) {
-        this.companyScale = companyScale;
-    }
-
-    public String getBusinessType() {
-        return businessType;
-    }
-
-    public void setBusinessType(String businessType) {
-        this.businessType = businessType;
-    }
-
-    public String getJobName() {
-        return jobName;
-    }
-
-    public void setJobName(String jobName) {
-        this.jobName = jobName;
-    }
-
-    public String getJobTime() {
-        return jobTime;
-    }
-
-    public void setJobTime(String jobTime) {
-        this.jobTime = jobTime;
-    }
-
-    public String getSalary() {
-        return salary;
-    }
-
-    public void setSalary(String salary) {
-        this.salary = salary;
-    }
-
-    public String getJobContent() {
-        return jobContent;
-    }
-
-    public void setJobContent(String jobContent) {
-        this.jobContent = jobContent;
-    }
-
-    public Integer getIndex() {
-        return index;
-    }
-
-    public void setIndex(Integer index) {
-        this.index = index;
-    }
-
-    public Long getCreateTimeStamp() {
-        return createTimeStamp;
-    }
-
-    public void setCreateTimeStamp(Long createTimeStamp) {
-        this.createTimeStamp = createTimeStamp;
-    }
-
-    public Long getLastUpdateStamp() {
-        return lastUpdateStamp;
-    }
-
-    public void setLastUpdateStamp(Long lastUpdateStamp) {
-        this.lastUpdateStamp = lastUpdateStamp;
-    }
-
-    public Integer getIsDel() {
-        return isDel;
-    }
-
-    public void setIsDel(Integer isDel) {
-        this.isDel = isDel;
-    }
 }

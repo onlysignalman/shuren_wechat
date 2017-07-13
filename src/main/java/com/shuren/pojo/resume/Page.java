@@ -1,9 +1,12 @@
 package com.shuren.pojo.resume;
 
+import lombok.Data;
+
 /**
  * Created by dbh on 2017/5/18.
  * 主页列表
  */
+@Data
 public class Page {
 
     private Integer id;
@@ -19,44 +22,4 @@ public class Page {
 
     //排序
     private Integer range;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
-
-    public String getHandleURL() {
-        return handleURL;
-    }
-
-    public void setHandleURL(String handleURL) {
-        this.handleURL = handleURL;
-    }
-
-    public Integer getRange() {
-        return range;
-    }
-
-    public void setRange(Integer range) {
-        this.range = range;
-    }
 }

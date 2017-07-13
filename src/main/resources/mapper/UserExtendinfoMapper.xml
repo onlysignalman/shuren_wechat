@@ -37,18 +37,135 @@
 	<update id="update" parameterType="UserExtendinfo">
 		UPDATE 
 			user_extendinfo 
-		SET 
-			 logo=#{logo}, score=#{score}, realName=#{realName}, sex=#{sex},birthday=#{birthday},  
-			 tall=#{tall}, weight=#{weight}, nation=#{nation}, politics=#{politics},marry=#{marry}, 
-			 contactPhone=#{contactPhone}, contactEmail=#{contactEmail}, idCard=#{idCard}, residence=#{residence},location=#{location}, 
-			 nowStatus=#{nowStatus}, wishType=#{wishType}, wishBusiness=#{wishBusiness}, wishJob=#{wishJob},wishLocation=#{wishLocation},  
-			 wishSalary=#{wishSalary}, collegeName=#{collegeName}, specialities=#{specialities}, graduationTime=#{graduationTime},collegeType=#{collegeType},  
-			 diplomas=#{diplomas}, degree=#{degree}, classDuty=#{classDuty}, studentDuty=#{studentDuty},scholarship=#{scholarship},  
-			 scholarshipRange=#{scholarshipRange}, awards=#{awards}, awardsRange=#{awardsRange}, awardsDes=#{awardsDes},internProject=#{internProject},  
-			 internTime=#{internTime}, internDuty=#{internDuty}, internDesc=#{internDesc}, hobby=#{hobby}, honor=#{honor},  
-			 assessment=#{assessment}, lastUpdateTimeStamp=unix_timestamp(now()) 
-		WHERE 
+		<set>
+			<if test="logo != null">
+				AND logo=#{logo},
+			</if>
+			<if test="score != null">
+				AND score=#{score}, 
+			</if>
+			<if test="realName != null">
+				AND realName=#{realName},
+			</if>
+			<if test="sex != null">
+				AND sex=#{sex},
+			</if>
+			<if test="birthday != null">
+				AND birthday=#{birthday},  
+			</if>
+			<if test="tall != null">
+				AND tall=#{tall},
+			</if>
+			<if test="weight != null">
+				AND weight=#{weight},
+			</if>
+			<if test="nation != null">
+				AND nation=#{nation},
+			</if>
+			<if test="politics != null">
+				AND politics=#{politics},
+			</if>
+			<if test="marry != null">
+				AND marry=#{marry},
+			</if>
+			<if test="contactPhone != null">
+				AND contactPhone=#{contactPhone},
+			</if>
+			<if test="contactEmail != null">
+				AND contactEmail=#{contactEmail},
+			</if>
+			<if test="idCard != null">
+				AND idCard=#{idCard},
+			</if>
+			<if test="residence != null">
+				AND residence=#{residence},
+			</if>
+			<if test="location != null">
+				AND location=#{location},
+			</if>
+			<if test="nowStatus != null">
+				AND nowStatus=#{nowStatus},
+			</if>
+			<if test="wishType != null">
+				AND wishType=#{wishType},
+			</if>
+			<if test="wishBusiness != null">
+				AND wishBusiness=#{wishBusiness},
+			</if>
+			<if test="wishJob != null">
+				AND wishJob=#{wishJob},
+			</if>
+			<if test="wishLocation != null">
+				AND wishLocation=#{wishLocation},
+			</if>
+			<if test="wishSalary != null">
+				AND wishSalary=#{wishSalary},
+			</if>
+			<if test="collegeName != null">
+				AND collegeName=#{collegeName},
+			</if>
+			<if test="specialities != null">
+				AND specialities=#{specialities},
+			</if>
+			<if test="graduationTime != null">
+				AND graduationTime=#{graduationTime},
+			</if>
+			<if test="collegeType != null">
+				AND collegeType=#{collegeType},  
+			</if>
+			<if test="diplomas != null">
+				AND diplomas=#{diplomas},
+			</if>
+			<if test="degree != null">
+				AND degree=#{degree},
+			</if>
+			<if test="classDuty != null">
+				AND classDuty=#{classDuty},
+			</if>
+			<if test="studentDuty != null">
+				AND studentDuty=#{studentDuty},
+			</if>
+			<if test="scholarship != null">
+				AND scholarship=#{scholarship},
+			</if>
+			<if test="scholarshipRange != null">
+				AND scholarshipRange=#{scholarshipRange},
+			</if>
+			<if test="awards != null">
+				AND awards=#{awards},
+			</if>
+			<if test="awardsRange != null">
+				AND awardsRange=#{awardsRange},
+			</if>
+			<if test="awardsDes != null">
+				AND awardsDes=#{awardsDes},
+			</if>
+			<if test="internProject != null">
+				AND internProject=#{internProject},  
+			</if>
+			<if test="internTime != null">
+				AND internTime=#{internTime},
+			</if>
+			<if test="internDuty != null">
+				AND internDuty=#{internDuty},
+			</if>
+			<if test="internDesc != null">
+				AND internDesc=#{internDesc},
+			</if>
+			<if test="hobby != null">
+				AND hobby=#{hobby},
+			</if>
+			<if test="honor != null">
+				AND honor=#{honor},  
+			</if>
+			<if test="assessment != null">
+				AND assessment=#{assessment},
+			</if>
+			AND lastUpdateTimeStamp=unix_timestamp(now()) 
+		</set>
+		<where>
 			userId = #{userId}
+		</where>	    
 	</update>
 
 </mapper>
