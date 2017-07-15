@@ -3,7 +3,7 @@
 <mapper namespace="com.shuren.mapper.resume.ResumeMapper">
 
     <select id="queryCountByUserId" resultType="long">
-        SELECT *
+        SELECT count(1)
         FROM resume r
         WHERE r.id in
         (

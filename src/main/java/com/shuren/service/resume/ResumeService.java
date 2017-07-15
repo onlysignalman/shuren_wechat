@@ -13,7 +13,7 @@ public interface ResumeService {
      * @param limit
      * @return
      */
-    ListReturns<Resume> findMyResume(Integer offset, Integer limit);
+    ListReturns<Resume> findMyResume(Integer offset, Integer limit, Integer userId);
 
     /**
      * 查询简历模板市场

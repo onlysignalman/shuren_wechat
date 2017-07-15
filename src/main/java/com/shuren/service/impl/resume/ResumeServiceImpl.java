@@ -21,7 +21,7 @@ public class ResumeServiceImpl implements ResumeService {
     private ResumeMapper resumeMapper;
 
     @Override
-    public ListReturns<Resume> findMyResume(Integer offset, Integer limit) {
+    public ListReturns<Resume> findMyResume(Integer offset, Integer limit, Integer userId) {
 
         ListReturns<Resume> resumeListReturns = new ListReturns<>();
 
@@ -29,7 +29,7 @@ public class ResumeServiceImpl implements ResumeService {
 //        UserBaseinfo user = UserThreadLocal.getUser();
 
         //根据当前登录的用户id查询用户拥有的简历信息
-        Long count = this.resumeMapper.queryCountByUserId(1, Constant.RESUMETYPE);
+        Long count = this.resumeMapper.queryCountByUserId(userId, Constant.RESUMETYPE);
         List<Resume> resumeList = this.resumeMapper.queryListByUserId(offset, limit,1, Constant.RESUMETYPE);
 
         resumeListReturns.setError(ErrorInfos.RESUMEDATASUCCESS.getError());

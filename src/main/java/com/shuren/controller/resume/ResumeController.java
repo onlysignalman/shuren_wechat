@@ -24,8 +24,9 @@ public class ResumeController {
     //查询我的简历
     @RequestMapping(value = "findMyResume", method = RequestMethod.GET)
     public ResponseEntity<ListReturns<Resume>> findMyResume(@RequestParam(value = "offset", required = false, defaultValue = "0") Integer offset,
-                                                            @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit) {
-        ListReturns<Resume> resumeListReturns = this.resumeService.findMyResume(offset, limit);
+                                                            @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit,
+                                                            @RequestParam("userId") Integer userId ) {
+        ListReturns<Resume> resumeListReturns = this.resumeService.findMyResume(offset, limit,userId);
         return ResponseEntity.ok(resumeListReturns);
     }
 
