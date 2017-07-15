@@ -38,7 +38,7 @@ public class PayServiceImpl implements PayService {
         //订单生成的机器 IP
         String spbillCreateIp = publicPayRequestBean.getSpbillCreateIp();
         //这里notify_url是 支付完成后微信发给该链接信息，可以判断会员是否支付成功，改变订单状态等。
-        String notify_url = "";
+        String notify_url = "http://www.baidu.com";
         //支付类型
         String trade_type = "JSAPI";
 
@@ -116,6 +116,7 @@ public class PayServiceImpl implements PayService {
         publicPayResponseBean.setSignType("MD5");
         publicPayResponseBean.setPackages(packages);
         publicPayResponseBean.setTimeStamp(timeStamp);
+        publicPayResponseBean.setPaySign(finalsign);
         return publicPayResponseBean;
     }
 

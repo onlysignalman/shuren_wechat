@@ -1,6 +1,8 @@
 package com.shuren;
 
+import com.shuren.bean.wechat.base.AccessToken;
 import com.shuren.service.resume.EmailService;
+import com.shuren.service.wechat.WeChatService;
 import com.shuren.utils.wechat.DataShapeConvertUtils;
 import org.assertj.core.util.Compatibility;
 import org.dom4j.DocumentException;
@@ -23,6 +25,9 @@ import java.util.Map;
 public class ShurenWechatApplicationTests {
 
     @Autowired
+    private WeChatService weChatService;
+
+    @Autowired
     private MenuService menuService;
 
     @Autowired
@@ -40,6 +45,12 @@ public class ShurenWechatApplicationTests {
 
 
     @Test
+    public void testgetAccessToken() throws IOException {
+        AccessToken accessToken = weChatService.getAccessToken();
+        System.out.println(accessToken.getAccess_token());
+    }
+
+        @Test
     public void testParseXml(){
 
         try {
