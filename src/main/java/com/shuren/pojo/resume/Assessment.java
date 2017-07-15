@@ -21,10 +21,10 @@ public class Assessment {
     private Integer point;
 
     //创建时间
-    private Integer createTimeStamp;
+    private Long createTimeStamp;
 
     //最新更新时间
-    private Integer lastUpdateTimeStamp;
+    private Long lastUpdateTimeStamp;
 
     //创建人
     private Integer createUserId;

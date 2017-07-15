@@ -16,5 +16,5 @@ public interface AssessmentService {
      * @param assTypeId
      * @return
      */
-    ListReturns<Assessment> findMyAssessmentList(Integer offset, Integer limit,Integer assTypeId);
+    ListReturns<Assessment> findMyAssessmentList(Integer offset, Integer limit,Integer assTypeId,Integer userId);
 }

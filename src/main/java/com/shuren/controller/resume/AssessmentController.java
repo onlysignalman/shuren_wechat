@@ -26,8 +26,9 @@ public class AssessmentController {
     @RequestMapping(value = "/findMyAssessmentList", method = RequestMethod.GET)
     public ResponseEntity<ListReturns<Assessment>> findMyAssessmentList(@RequestParam(value = "offset", required = false, defaultValue = "0") Integer offset,
                                                                         @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit,
-                                                                        @RequestParam(value = "json",required = false, defaultValue = "1") Integer assTypeId){
-        ListReturns<Assessment> listReturns = this.assessmentService.findMyAssessmentList(offset, limit,assTypeId);
+                                                                        @RequestParam(value = "json",required = false, defaultValue = "1") Integer assTypeId,
+                                                                        @RequestParam("userId") Integer userId){
+        ListReturns<Assessment> listReturns = this.assessmentService.findMyAssessmentList(offset, limit,assTypeId,userId);
         return ResponseEntity.ok(listReturns);
     }
 

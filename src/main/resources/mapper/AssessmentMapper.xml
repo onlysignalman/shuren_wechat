@@ -14,7 +14,7 @@
         AND assTypeId=${assTypeId}
     </select>
     
-    <select id="findMyAssessmentList" resultType="assessment">
+    <select id="findMyAssessmentList" resultType="Assessment">
         SELECT *
         FROM assessment a
         WHERE a.assId in
