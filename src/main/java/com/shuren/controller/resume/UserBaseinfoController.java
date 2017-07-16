@@ -2,7 +2,9 @@ package com.shuren.controller.resume;
 
 import javax.servlet.http.HttpSession;
 
+import com.shuren.constants.wechat.WeChatConfigProperties;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +17,8 @@ import com.shuren.bean.resume.ModelReturns;
 import com.shuren.pojo.resume.UserBaseinfo;
 import com.shuren.service.resume.UserBaseinfoService;
 
+import java.io.IOException;
+
 /**
  * Created by 董帮辉 on 2017-5-18.
  */
@@ -24,16 +28,23 @@ public class UserBaseinfoController extends BaseController{
 	
 	@Autowired
 	private UserBaseinfoService userBaseinfoService;
-	
+
+
 	/**
 	 * 用户注册
 	 * @param userBaseinfo
 	 */
 	@RequestMapping("/register")
 	public ResponseEntity<BaseReturns> register(@ModelAttribute UserBaseinfo userBaseinfo,
-			@RequestParam(value="msg", required=true)String msg){
-		BaseReturns returns = userBaseinfoService.register(userBaseinfo, msg);
-		return ResponseEntity.ok(returns);
+												@RequestParam(value="msg", required=true)String msg,
+												@RequestParam(value = "code", required = false, defaultValue = "") String code){
+		try {
+			BaseReturns returns = userBaseinfoService.register(userBaseinfo, msg, code);
+			return ResponseEntity.ok(returns);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 	}
 	
 	/**

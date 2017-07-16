@@ -1,5 +1,6 @@
 package com.shuren.service.resume;
 
+import java.io.IOException;
 import java.util.Map;
 
 import com.shuren.bean.resume.BaseReturns;
@@ -17,7 +18,7 @@ public interface UserBaseinfoService {
 	 * @param userBaseinfo
 	 * @return
 	 */
-	BaseReturns register(UserBaseinfo userBaseinfo, String msg);
+	BaseReturns register(UserBaseinfo userBaseinfo, String msg, String code) throws IOException;
 
 	/**
 	 * 用户登录

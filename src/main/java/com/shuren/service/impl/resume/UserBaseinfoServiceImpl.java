@@ -1,9 +1,14 @@
 package com.shuren.service.impl.resume;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.shuren.constants.wechat.WeChatConfigProperties;
+import com.shuren.utils.wechat.StingUtils;
+import com.shuren.utils.wechat.UrlRequestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +27,15 @@ import com.shuren.pojo.resume.UserExtendinfo;
 import com.shuren.service.resume.MsgService;
 import com.shuren.service.resume.UserBaseinfoService;
 import com.shuren.utils.wechat.SecurityUtils;
+import org.springframework.util.StringUtils;
 
 /**
  * Created by 董帮辉 on 2017-5-18.
  */
 @Service("userBaseinfoService")
 public class UserBaseinfoServiceImpl implements UserBaseinfoService {
+
+	private static final ObjectMapper MAPPER = new ObjectMapper();
 
 	@Autowired
 	private UserBaseinfoMapper userBaseinfoMapper;
@@ -40,12 +48,15 @@ public class UserBaseinfoServiceImpl implements UserBaseinfoService {
 	
 	@Autowired
 	private LanguageCapacityMapper languageCapacityMapper;
-	
+
+	@Autowired
+	private WeChatConfigProperties weChatConfigProperties;
+
 	@Autowired
 	private MsgService msgService;
 	
 	@Override
-	public BaseReturns register(UserBaseinfo userBaseinfo, String msg) {
+	public BaseReturns register(UserBaseinfo userBaseinfo, String msg, String code) throws IOException {
 		// TODO Auto-generated method stub
 		BaseReturns returns = new BaseReturns();
 		//1.短信校验
@@ -64,7 +75,23 @@ public class UserBaseinfoServiceImpl implements UserBaseinfoService {
 			returns.setStatus(ErrorInfos.GAISHOUJIHAOYIZHUCHE.getStatus());
 			return returns;
 		}
+		//判断code是否为空
+		String openId = null;
+		if(!StringUtils.isEmpty(code)){
+			//调用微信接口查询用户
+			String pageAccessTokenUrl = weChatConfigProperties.getPageAccessTokenUrl();
+			String result = UrlRequestUtils.sendGet(pageAccessTokenUrl.replace("APPID", weChatConfigProperties.getAppId()).
+					replace("SECRET", weChatConfigProperties.getAppSecret()).replace("CODE", code));
+			if(StringUtils.isEmpty(result)){
+				Map<String, String> map = MAPPER.readValue(result, Map.class);
+				if (StringUtils.isEmpty(map.get("access_token"))){
+					openId = map.get("openid");
+				}
+			}
+
+		}
 		userBaseinfo.setPassword(SecurityUtils.MD5(userBaseinfo.getPassword()));
+		userBaseinfo.setOpenId(openId);
 		userBaseinfoMapper.register(userBaseinfo);
 		return returns;
 	}
