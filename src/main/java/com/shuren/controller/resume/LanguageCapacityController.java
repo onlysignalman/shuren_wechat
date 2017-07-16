@@ -29,13 +29,7 @@ public class LanguageCapacityController {
 	@RequestMapping("/addLanguage")
 	public ResponseEntity<BaseReturns> addLanguage(@ModelAttribute LanguageCapacity languageCapacity, HttpSession session){
 		BaseReturns returns = new BaseReturns();
-		Integer userId = null;
-		//登录判断
-		Object userBaseinfo = session.getAttribute("user");
-		if (userBaseinfo != null && userBaseinfo instanceof UserBaseinfo){
-			UserBaseinfo user = (UserBaseinfo)userBaseinfo;
-			userId = user.getUserId();
-		}
+		Integer userId = getUserId(languageCapacity, session);
 		if(userId == null || userId <= 0){
 			returns.setError(ErrorInfos.YONGHUWEIDENGLU.getError());
 			returns.setStatus(ErrorInfos.YONGHUWEIDENGLU.getStatus());
@@ -50,13 +44,7 @@ public class LanguageCapacityController {
 	@RequestMapping("/updateLanguage")
 	public ResponseEntity<BaseReturns> updateLanguage(@ModelAttribute LanguageCapacity languageCapacity, HttpSession session){
 		BaseReturns returns = new BaseReturns();
-		Integer userId = null;
-		//登录判断
-		Object userBaseinfo = session.getAttribute("user");
-		if (userBaseinfo != null && userBaseinfo instanceof UserBaseinfo){
-			UserBaseinfo user = (UserBaseinfo)userBaseinfo;
-			userId = user.getUserId();
-		}
+		Integer userId = getUserId(languageCapacity, session);
 		if(userId == null || userId <= 0){
 			returns.setError(ErrorInfos.YONGHUWEIDENGLU.getError());
 			returns.setStatus(ErrorInfos.YONGHUWEIDENGLU.getStatus());
@@ -71,13 +59,7 @@ public class LanguageCapacityController {
 	@RequestMapping("/getLanguages")
 	public ResponseEntity<ListReturns<LanguageCapacity>> getLanguages(@ModelAttribute LanguageCapacity languageCapacity, HttpSession session){
 		ListReturns<LanguageCapacity> returns = new ListReturns<LanguageCapacity>();
-		Integer userId = null;
-		//登录判断
-		Object userBaseinfo = session.getAttribute("user");
-		if (userBaseinfo != null && userBaseinfo instanceof UserBaseinfo){
-			UserBaseinfo user = (UserBaseinfo)userBaseinfo;
-			userId = user.getUserId();
-		}
+		Integer userId = getUserId(languageCapacity, session);
 		if(userId == null || userId <= 0){
 			returns.setError(ErrorInfos.YONGHUWEIDENGLU.getError());
 			returns.setStatus(ErrorInfos.YONGHUWEIDENGLU.getStatus());
@@ -87,5 +69,17 @@ public class LanguageCapacityController {
 		returns = languageCapacityService.getLanguages(languageCapacity);
 		return ResponseEntity.ok(returns);
 		
+	}
+
+	private Integer getUserId(LanguageCapacity languageCapacity, HttpSession session){
+		BaseReturns returns = new BaseReturns();
+		Integer userId = languageCapacity.getUserId();
+		//登录判断
+		Object userBaseinfo = session.getAttribute("user");
+		if (userBaseinfo != null && userBaseinfo instanceof UserBaseinfo){
+			UserBaseinfo user = (UserBaseinfo)userBaseinfo;
+			userId = user.getUserId();
+		}
+		return userId;
 	}
 }

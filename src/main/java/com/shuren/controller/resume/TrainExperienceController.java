@@ -28,13 +28,7 @@ public class TrainExperienceController {
 	@RequestMapping("/addTrain")
 	public ResponseEntity<BaseReturns> addTrain(@ModelAttribute TrainExperience trainExperience, HttpSession session){
 		BaseReturns returns = new BaseReturns();
-		Integer userId = null;
-		//登录判断
-		Object userBaseinfo = session.getAttribute("user");
-		if (userBaseinfo != null && userBaseinfo instanceof UserBaseinfo){
-			UserBaseinfo user = (UserBaseinfo)userBaseinfo;
-			userId = user.getUserId();
-		}
+		Integer userId = getUserId(trainExperience, session);
 		if(userId == null || userId <= 0){
 			returns.setError(ErrorInfos.YONGHUWEIDENGLU.getError());
 			returns.setStatus(ErrorInfos.YONGHUWEIDENGLU.getStatus());
@@ -49,13 +43,7 @@ public class TrainExperienceController {
 	@RequestMapping("/updateTrain")
 	public ResponseEntity<BaseReturns> updateTrain(@ModelAttribute TrainExperience trainExperience, HttpSession session){
 		BaseReturns returns = new BaseReturns();
-		Integer userId = null;
-		//登录判断
-		Object userBaseinfo = session.getAttribute("user");
-		if (userBaseinfo != null && userBaseinfo instanceof UserBaseinfo){
-			UserBaseinfo user = (UserBaseinfo)userBaseinfo;
-			userId = user.getUserId();
-		}
+		Integer userId = getUserId(trainExperience, session);
 		if(userId == null || userId <= 0){
 			returns.setError(ErrorInfos.YONGHUWEIDENGLU.getError());
 			returns.setStatus(ErrorInfos.YONGHUWEIDENGLU.getStatus());
@@ -70,13 +58,7 @@ public class TrainExperienceController {
 	@RequestMapping("/getTrains")
 	public ResponseEntity<ListReturns<TrainExperience>> getTrains(@ModelAttribute TrainExperience trainExperience, HttpSession session){
 		ListReturns<TrainExperience> returns = new ListReturns<TrainExperience>();
-		Integer userId = null;
-		//登录判断
-		Object userBaseinfo = session.getAttribute("user");
-		if (userBaseinfo != null && userBaseinfo instanceof UserBaseinfo){
-			UserBaseinfo user = (UserBaseinfo)userBaseinfo;
-			userId = user.getUserId();
-		}
+		Integer userId = getUserId(trainExperience, session);
 		if(userId == null || userId <= 0){
 			returns.setError(ErrorInfos.YONGHUWEIDENGLU.getError());
 			returns.setStatus(ErrorInfos.YONGHUWEIDENGLU.getStatus());
@@ -87,5 +69,17 @@ public class TrainExperienceController {
 		return ResponseEntity.ok(returns);
 		
 	}
-	
+
+	private Integer getUserId(TrainExperience trainExperience, HttpSession session){
+		BaseReturns returns = new BaseReturns();
+		Integer userId = trainExperience.getUserId();
+		//登录判断
+		Object userBaseinfo = session.getAttribute("user");
+		if (userBaseinfo != null && userBaseinfo instanceof UserBaseinfo){
+			UserBaseinfo user = (UserBaseinfo)userBaseinfo;
+			userId = user.getUserId();
+		}
+		return userId;
+	}
+
 }

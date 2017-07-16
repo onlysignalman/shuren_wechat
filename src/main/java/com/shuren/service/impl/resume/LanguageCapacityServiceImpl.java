@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.shuren.bean.resume.BaseReturns;
@@ -20,6 +21,9 @@ import com.shuren.service.resume.LanguageCapacityService;
 @Service
 public class LanguageCapacityServiceImpl implements LanguageCapacityService {
 
+	@Value("${splitString}")
+	private String splitString;
+
 	@Autowired
 	private LanguageCapacityMapper languagecapacityMapper;
 	
@@ -27,12 +31,24 @@ public class LanguageCapacityServiceImpl implements LanguageCapacityService {
 	public BaseReturns add(LanguageCapacity languageCapacity) {
 		// TODO Auto-generated method stub
 		BaseReturns returns = new BaseReturns();
-		//1.添加语言能力信息
-		if(languageCapacity.getId() != null && languageCapacity.getId() > 0){
-			update(languageCapacity);
+		String language = languageCapacity.getLanguage();
+		int length = language.split(splitString).length;
+		if(length > 1) {
+			for (int i = 0; i < length; i++) {
+				LanguageCapacity languageCt = new LanguageCapacity();
+				languageCt.setLanguage(languageCapacity.getLanguage().split(splitString)[i]);
+				languageCt.setReadAndWrite(languageCapacity.getReadAndWrite().split(splitString)[i]);
+				languageCt.setListenAndSpeak(languageCapacity.getListenAndSpeak().split(splitString)[i]);
+				languagecapacityMapper.add(languageCt);
+			}
+		}else {
+			//1.添加语言能力信息
+			if(languageCapacity.getId() != null && languageCapacity.getId() > 0){
+				update(languageCapacity);
+			}
+			languagecapacityMapper.add(languageCapacity);
+			//2.可将语言能力信息放入用户扩展信息
 		}
-		languagecapacityMapper.add(languageCapacity);
-		//2.可将语言能力信息放入用户扩展信息
 		return returns;
 	}
 

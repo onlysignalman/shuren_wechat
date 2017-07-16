@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.shuren.pojo.resume.JobExperience;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface JobExperienceMapper {
 
 	Long add(JobExperience jobExperience);

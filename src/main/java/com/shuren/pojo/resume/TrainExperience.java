@@ -24,7 +24,7 @@ public class TrainExperience {
     private String trainAwardName;
 
     //获得时间
-    private Long trainAwardTime;
+    private String trainAwardTime;
 
     //详细说明
     private String detail;

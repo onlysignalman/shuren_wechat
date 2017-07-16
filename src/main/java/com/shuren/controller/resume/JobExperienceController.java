@@ -2,6 +2,7 @@ package com.shuren.controller.resume;
 
 import javax.servlet.http.HttpSession;
 
+import com.shuren.pojo.resume.TrainExperience;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -28,13 +29,7 @@ public class JobExperienceController {
 	@RequestMapping("/addJob")
 	public ResponseEntity<BaseReturns> addJob(@ModelAttribute JobExperience jobExperience, HttpSession session){
 		BaseReturns returns = new BaseReturns();
-		Integer userId = null;
-		//登录判断
-		Object userBaseinfo = session.getAttribute("user");
-		if (userBaseinfo != null && userBaseinfo instanceof UserBaseinfo){
-			UserBaseinfo user = (UserBaseinfo)userBaseinfo;
-			userId = user.getUserId();
-		}
+		Integer userId = getUserId(jobExperience, session);
 		if(userId == null || userId <= 0){
 			returns.setError(ErrorInfos.YONGHUWEIDENGLU.getError());
 			returns.setStatus(ErrorInfos.YONGHUWEIDENGLU.getStatus());
@@ -49,13 +44,7 @@ public class JobExperienceController {
 	@RequestMapping("/updateJob")
 	public ResponseEntity<BaseReturns> updateJob(@ModelAttribute JobExperience jobExperience, HttpSession session){
 		BaseReturns returns = new BaseReturns();
-		Integer userId = null;
-		//登录判断
-		Object userBaseinfo = session.getAttribute("user");
-		if (userBaseinfo != null && userBaseinfo instanceof UserBaseinfo){
-			UserBaseinfo user = (UserBaseinfo)userBaseinfo;
-			userId = user.getUserId();
-		}
+		Integer userId = getUserId(jobExperience, session);
 		if(userId == null || userId <= 0){
 			returns.setError(ErrorInfos.YONGHUWEIDENGLU.getError());
 			returns.setStatus(ErrorInfos.YONGHUWEIDENGLU.getStatus());
@@ -70,13 +59,7 @@ public class JobExperienceController {
 	@RequestMapping("/getJobs")
 	public ResponseEntity<ListReturns<JobExperience>> getJobs(@ModelAttribute JobExperience jobExperience, HttpSession session){
 		ListReturns<JobExperience> returns = new ListReturns<JobExperience>();
-		Integer userId = null;
-		//登录判断
-		Object userBaseinfo = session.getAttribute("user");
-		if (userBaseinfo != null && userBaseinfo instanceof UserBaseinfo){
-			UserBaseinfo user = (UserBaseinfo)userBaseinfo;
-			userId = user.getUserId();
-		}
+		Integer userId = getUserId(jobExperience, session);
 		if(userId == null || userId <= 0){
 			returns.setError(ErrorInfos.YONGHUWEIDENGLU.getError());
 			returns.setStatus(ErrorInfos.YONGHUWEIDENGLU.getStatus());
@@ -86,5 +69,17 @@ public class JobExperienceController {
 		returns = jobExperienceService.getJobs(jobExperience);
 		return ResponseEntity.ok(returns);
 		
+	}
+
+	private Integer getUserId(JobExperience jobExperience, HttpSession session){
+		BaseReturns returns = new BaseReturns();
+		Integer userId = jobExperience.getUserId();
+		//登录判断
+		Object userBaseinfo = session.getAttribute("user");
+		if (userBaseinfo != null && userBaseinfo instanceof UserBaseinfo){
+			UserBaseinfo user = (UserBaseinfo)userBaseinfo;
+			userId = user.getUserId();
+		}
+		return userId;
 	}
 }

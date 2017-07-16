@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.shuren.bean.resume.BaseReturns;
@@ -19,7 +20,10 @@ import com.shuren.service.resume.TrainExperienceService;
  */
 @Service
 public class TrainExperienceServiceImpl implements TrainExperienceService {
-	
+
+	@Value("${splitString}")
+	private String splitString;
+
 	@Autowired
 	private TrainExperienceMapper trainExperienceMapper;
 	
@@ -28,11 +32,24 @@ public class TrainExperienceServiceImpl implements TrainExperienceService {
 		// TODO Auto-generated method stub
 		BaseReturns returns = new BaseReturns();
 		//1.增加培训经验
-		if(trainExperience.getId() != null && trainExperience.getId() > 0){
-			update(trainExperience);
+		String name = trainExperience.getTrainName();
+		int length = name.split(splitString).length;
+		if(length > 1){
+			for(int i = 0; i < length; i++){
+				TrainExperience train = new TrainExperience();
+				train.setTrainName(trainExperience.getTrainName().split(splitString)[i]);
+				train.setTrainAwardName(trainExperience.getTrainAwardName().split(splitString)[i]);
+				train.setTrainAwardTime(trainExperience.getTrainAwardTime().split(splitString)[i]);
+				train.setTrainLocation(trainExperience.getTrainLocation().split(splitString)[i]);
+				trainExperienceMapper.add(train);
+			}
+		}else{
+			if(trainExperience.getId() != null && trainExperience.getId() > 0){
+				update(trainExperience);
+			}
+			trainExperienceMapper.add(trainExperience);
+			//2.可将信息放入用户扩展信息
 		}
-		trainExperienceMapper.add(trainExperience);
-		//2.可将信息放入用户扩展信息
 		return returns;
 	}
 
