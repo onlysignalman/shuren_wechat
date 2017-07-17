@@ -8,7 +8,7 @@
 			 createTimeStamp, lastUpdateStamp, isDel)
 	    values
 	    	(#{userId}, #{language}, #{readAndWrite}, #{listenAndSpeak}, #{index}, 
-			 unix_timestamp(now()), unix_timestamp(now()), 0)
+			 unix_timestamp(now())*1000, unix_timestamp(now())*1000, 0)
 	</insert>
 	
 	<select id="getLanguagesCount" parameterType="java.util.Map" resultType="java.lang.Long">
@@ -45,7 +45,7 @@
 			<if test="index != null">
 				AND index=#{index},
 			</if>
-			AND lastUpdateStamp=unix_timestamp(now()) 
+			AND lastUpdateStamp=unix_timestamp(now())*1000 
 		</set>
 		<where>
 			id = #{id}

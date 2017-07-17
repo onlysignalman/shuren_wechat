@@ -22,7 +22,7 @@
 			 #{collegeType}, #{diplomas}, #{degree}, #{classDuty}, #{studentDuty}, 
 			 #{scholarship}, #{scholarshipRange}, #{awards}, #{awardsRange}, #{awardsDes}, 
 			 #{internProject}, #{internTime}, #{internDuty}, #{internDesc}, #{hobby}, 
-			 #{honor}, #{assessment}, unix_timestamp(now()), unix_timestamp(now()), 0)
+			 #{honor}, #{assessment}, unix_timestamp(now())*1000, unix_timestamp(now())*1000, 0)
 	</insert>
 	
 	<select id="getOne" parameterType="java.util.Map" resultType="UserExtendinfo">
@@ -161,7 +161,7 @@
 			<if test="assessment != null">
 				AND assessment=#{assessment},
 			</if>
-			AND lastUpdateTimeStamp=unix_timestamp(now()) 
+			AND lastUpdateTimeStamp=unix_timestamp(now())*1000 
 		</set>
 		<where>
 			userId = #{userId}

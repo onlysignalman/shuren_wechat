@@ -10,7 +10,7 @@
 	    values
 	    	(#{userId}, #{companyName}, #{companyType}, #{companyScale}, #{businessType}, 
 			 #{jobName}, #{jobTime}, #{salary}, #{jobContent}, #{index},
-			 unix_timestamp(now()), unix_timestamp(now()), 0)
+			 unix_timestamp(now())*1000, unix_timestamp(now())*1000, 0)
 	</insert>
 	
 	<select id="getJobsCount" parameterType="java.util.Map" resultType="java.lang.Long">
@@ -36,7 +36,7 @@
 			job_experience 
 		SET 
 			 companyName=#{companyName}, companyType=#{companyType}, companyScale=#{companyScale}, businessType=#{businessType}, jobName=#{jobName}, 
-			 jobTime=#{jobTime}, salary=#{salary}, jobContent=#{jobContent}, index=#{index}, lastUpdateStamp=unix_timestamp(now()) 
+			 jobTime=#{jobTime}, salary=#{salary}, jobContent=#{jobContent}, index=#{index}, lastUpdateStamp=unix_timestamp(now())*1000 
 		WHERE 
 			id = #{id}
 	</update>

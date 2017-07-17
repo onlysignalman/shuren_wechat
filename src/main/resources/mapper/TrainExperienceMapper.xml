@@ -8,7 +8,7 @@
 			 detail, index, createTimeStamp, lastUpdateStamp, isDel)
 	    values
 	    	(#{userId}, #{trainName}, #{trainLocation}, #{trainAwardName}, #{trainAwardTime}, 
-			 #{detail}, #{index}, unix_timestamp(now()), unix_timestamp(now()), 0)
+			 #{detail}, #{index}, unix_timestamp(now())*1000, unix_timestamp(now())*1000, 0)
 	</insert>
 	
 	<select id="getJobsCount" parameterType="java.util.Map" resultType="java.lang.Long">
@@ -34,7 +34,7 @@
 			train_experience 
 		SET 
 			 trainName=#{trainName}, trainLocation=#{trainLocation}, trainAwardName=#{trainAwardName}, trainAwardTime=#{trainAwardTime}, detail=#{detail}, 
-			 lastUpdateStamp=unix_timestamp(now()) 
+			 lastUpdateStamp=unix_timestamp(now())*1000 
 		WHERE 
 			id = #{id}
 	</update>

@@ -7,7 +7,7 @@
 			 credit, logo, score, createTimeStamp, lastUpdateTimeStamp, isDel)
 	    values
 	    	(#{openId}, #{nickName}, #{mobile}, #{email}, #{password}, 
-	    	0, #{logo}, 0, unix_timestamp(now()), unix_timestamp(now()), 0)
+	    	0, #{logo}, 0, unix_timestamp(now())*1000, unix_timestamp(now())*1000, 0)
 	</insert>
 	
 	<select id="login" parameterType="Map" resultType="UserBaseinfo">
@@ -45,7 +45,7 @@
 				password = #{password}, 
 			</if>
 			<if test="lastUpdateTimeStamp != null">
-				AND lastUpdateTimeStamp = unix_timestamp(now()) 
+				AND lastUpdateTimeStamp = unix_timestamp(now())*1000 
 			</if>
 		</set>
 		<where>
@@ -78,7 +78,7 @@
 			<if test="score !=null">
 				AND score = #{score},
 			</if>
-			AND lastUpdateTimeStamp = unix_timestamp(now()) 
+			AND lastUpdateTimeStamp = unix_timestamp(now())*1000 
 		</set>
 		<where>
 			userId = #{userId}
