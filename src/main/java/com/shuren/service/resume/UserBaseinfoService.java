@@ -48,4 +48,11 @@ public interface UserBaseinfoService {
 	 * @return
 	 */
 	ModelReturns<String> getScore(Integer userId);
+
+	/**
+	 * 代投
+	 * @param isSend
+	 * @return
+	 */
+	BaseReturns isSend(String isSend);
 }

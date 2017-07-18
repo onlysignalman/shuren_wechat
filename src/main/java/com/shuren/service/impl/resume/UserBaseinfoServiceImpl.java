@@ -263,4 +263,14 @@ public class UserBaseinfoServiceImpl implements UserBaseinfoService {
 		returns.setModel(String.valueOf(calcScore));
 		return returns;
 	}
+
+	@Override
+	public BaseReturns isSend(String isSend) {
+		// TODO Auto-generated method stub
+		BaseReturns returns = new BaseReturns();
+		Map<String, String> map = new HashMap<>();
+		map.put("isSend", isSend);
+		userBaseinfoMapper.update(map);
+		return returns;
+	}
 }

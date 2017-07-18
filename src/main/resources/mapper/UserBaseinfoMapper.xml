@@ -4,10 +4,10 @@
     <insert id="register" parameterType="UserBaseinfo" useGeneratedKeys="true" keyProperty="userId">
 		INSERT INTO user_baseinfo
 			(openId, nickName, mobile, email, password, 
-			 credit, logo, score, createTimeStamp, lastUpdateTimeStamp, isDel)
+			 credit, logo, score, createTimeStamp, lastUpdateTimeStamp, isDel, isSend)
 	    values
 	    	(#{openId}, #{nickName}, #{mobile}, #{email}, #{password}, 
-	    	0, #{logo}, 0, unix_timestamp(now())*1000, unix_timestamp(now())*1000, 0)
+	    	0, #{logo}, 0, unix_timestamp(now())*1000, unix_timestamp(now())*1000, 0, 0)
 	</insert>
 	
 	<select id="login" parameterType="Map" resultType="UserBaseinfo">
@@ -77,6 +77,9 @@
 			</if>
 			<if test="score !=null">
 				AND score = #{score},
+			</if>
+			<if test="isSend !=null">
+				AND isSend = #{isSend},
 			</if>
 			AND lastUpdateTimeStamp = unix_timestamp(now())*1000 
 		</set>

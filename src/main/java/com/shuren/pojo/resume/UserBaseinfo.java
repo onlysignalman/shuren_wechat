@@ -36,6 +36,9 @@ public class UserBaseinfo {
     //logo
     public String logo;
     
+    //代投
+    public String isSend;
+    
     //逻辑删
     private Integer isDel;
     

@@ -94,4 +94,14 @@ public class UserBaseinfoController extends BaseController{
 		returns = userBaseinfoService.getScore(userId);
 		return ResponseEntity.ok(returns);
 	}
+	
+	/**
+	 * 更改代投
+	 * @param userBaseinfo
+	 */
+	@RequestMapping("/isSend")
+	public ResponseEntity<BaseReturns> isSend(@ModelAttribute UserBaseinfo userBaseinfo, HttpSession session){
+		BaseReturns returns = userBaseinfoService.isSend(userBaseinfo.getIsSend());
+		return ResponseEntity.ok(returns);
+	}
 }
