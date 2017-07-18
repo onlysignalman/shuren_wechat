@@ -3,14 +3,13 @@ package com.shuren.controller.resume;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.shuren.bean.resume.BaseReturns;
 import com.shuren.bean.resume.ModelReturns;
-import com.shuren.pojo.resume.UserBaseinfo;
+import com.shuren.pojo.resume.MessageLog;
 import com.shuren.service.resume.MsgService;
 
 /**
@@ -24,14 +23,14 @@ public class MsgController extends BaseController{
 	private MsgService msgService;
 	
 	@RequestMapping("/getMsg")
-	public void getMsg(@RequestParam(value="mobile", required=true) String mobile){
+	public ResponseEntity<ModelReturns<Map<String, Object>>> getMsg(@RequestParam(value="mobile", required=true) String mobile){
 		ModelReturns<Map<String, Object>> returns = msgService.getMsg(mobile);
-		WriteJson(returns);
+		return ResponseEntity.ok(returns);
 	}
 	
 	@RequestMapping("/getLastMsg")
-	public void getLastMsg(@RequestParam(value="mobile", required=true) String mobile){
-		ModelReturns<Map<String, Object>> returns = msgService.getLastMsg(mobile);
-		WriteJson(returns);
+	public ResponseEntity<ModelReturns<MessageLog>> getLastMsg(@RequestParam(value="mobile", required=true) String mobile){
+		ModelReturns<MessageLog> returns = msgService.getLastMsg(mobile);
+		return ResponseEntity.ok(returns);
 	}
 }

@@ -3,6 +3,7 @@ package com.shuren.service.resume;
 import java.util.Map;
 
 import com.shuren.bean.resume.ModelReturns;
+import com.shuren.pojo.resume.MessageLog;
 
 /**
  * Created by 董帮辉 on 2017-5-18.
@@ -21,5 +22,5 @@ public interface MsgService {
 	 * @param mobile
 	 * @return
 	 */
-	ModelReturns<Map<String, Object>> getLastMsg(String mobile);
+	ModelReturns<MessageLog> getLastMsg(String mobile);
 }
