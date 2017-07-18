@@ -37,15 +37,15 @@
 				language=#{language},
 			</if>
 			<if test="readAndWrite != null">
-				AND readAndWrite=#{readAndWrite},
+				readAndWrite=#{readAndWrite},
 			</if>
 			<if test="listenAndSpeak != null">
-				AND listenAndSpeak=#{listenAndSpeak},
+				listenAndSpeak=#{listenAndSpeak},
 			</if>
 			<if test="index != null">
-				AND index=#{index},
+				index=#{index},
 			</if>
-			AND lastUpdateStamp=unix_timestamp(now())*1000 
+			lastUpdateStamp=unix_timestamp(now())*1000 
 		</set>
 		<where>
 			id = #{id}

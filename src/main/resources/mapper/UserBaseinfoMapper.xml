@@ -61,27 +61,27 @@
 				openId = #{openId},
 			</if>
 			<if test="nickName !=null">
-				AND nickName = #{nickName},
+				nickName = #{nickName},
 			</if>
 			<if test="mobile !=null">
-				AND mobile = #{mobile},
+				mobile = #{mobile},
 			</if>
 			<if test="email !=null">
-				AND email = #{email},
+				email = #{email},
 			</if>
 			<if test="credit !=null">
-				AND credit = #{credit},
+				credit = #{credit},
 			</if>
 			<if test="logo !=null">
-				AND logo = #{logo},
+				logo = #{logo},
 			</if>
 			<if test="score !=null">
-				AND score = #{score},
+				score = #{score},
 			</if>
 			<if test="isSend !=null">
-				AND isSend = #{isSend},
+				isSend = #{isSend},
 			</if>
-			AND lastUpdateTimeStamp = unix_timestamp(now())*1000 
+			lastUpdateTimeStamp = unix_timestamp(now())*1000 
 		</set>
 		<where>
 			userId = #{userId}

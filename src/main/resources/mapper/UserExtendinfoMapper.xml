@@ -39,129 +39,129 @@
 			user_extendinfo 
 		<set>
 			<if test="logo != null">
-				AND logo=#{logo},
+				logo=#{logo},
 			</if>
 			<if test="score != null">
-				AND score=#{score}, 
+				score=#{score}, 
 			</if>
 			<if test="realName != null">
-				AND realName=#{realName},
+				realName=#{realName},
 			</if>
 			<if test="sex != null">
-				AND sex=#{sex},
+				sex=#{sex},
 			</if>
 			<if test="birthday != null">
-				AND birthday=#{birthday},  
+				birthday=#{birthday},  
 			</if>
 			<if test="tall != null">
-				AND tall=#{tall},
+				tall=#{tall},
 			</if>
 			<if test="weight != null">
-				AND weight=#{weight},
+				weight=#{weight},
 			</if>
 			<if test="nation != null">
-				AND nation=#{nation},
+				nation=#{nation},
 			</if>
 			<if test="politics != null">
-				AND politics=#{politics},
+				politics=#{politics},
 			</if>
 			<if test="marry != null">
-				AND marry=#{marry},
+				marry=#{marry},
 			</if>
 			<if test="contactPhone != null">
-				AND contactPhone=#{contactPhone},
+				contactPhone=#{contactPhone},
 			</if>
 			<if test="contactEmail != null">
-				AND contactEmail=#{contactEmail},
+				contactEmail=#{contactEmail},
 			</if>
 			<if test="idCard != null">
-				AND idCard=#{idCard},
+				idCard=#{idCard},
 			</if>
 			<if test="residence != null">
-				AND residence=#{residence},
+				residence=#{residence},
 			</if>
 			<if test="location != null">
-				AND location=#{location},
+				location=#{location},
 			</if>
 			<if test="nowStatus != null">
-				AND nowStatus=#{nowStatus},
+				nowStatus=#{nowStatus},
 			</if>
 			<if test="wishType != null">
-				AND wishType=#{wishType},
+				wishType=#{wishType},
 			</if>
 			<if test="wishBusiness != null">
-				AND wishBusiness=#{wishBusiness},
+				wishBusiness=#{wishBusiness},
 			</if>
 			<if test="wishJob != null">
-				AND wishJob=#{wishJob},
+				wishJob=#{wishJob},
 			</if>
 			<if test="wishLocation != null">
-				AND wishLocation=#{wishLocation},
+				wishLocation=#{wishLocation},
 			</if>
 			<if test="wishSalary != null">
-				AND wishSalary=#{wishSalary},
+				wishSalary=#{wishSalary},
 			</if>
 			<if test="collegeName != null">
-				AND collegeName=#{collegeName},
+				collegeName=#{collegeName},
 			</if>
 			<if test="specialities != null">
-				AND specialities=#{specialities},
+				specialities=#{specialities},
 			</if>
 			<if test="graduationTime != null">
-				AND graduationTime=#{graduationTime},
+				graduationTime=#{graduationTime},
 			</if>
 			<if test="collegeType != null">
-				AND collegeType=#{collegeType},  
+				collegeType=#{collegeType},  
 			</if>
 			<if test="diplomas != null">
-				AND diplomas=#{diplomas},
+				diplomas=#{diplomas},
 			</if>
 			<if test="degree != null">
-				AND degree=#{degree},
+				degree=#{degree},
 			</if>
 			<if test="classDuty != null">
-				AND classDuty=#{classDuty},
+				classDuty=#{classDuty},
 			</if>
 			<if test="studentDuty != null">
-				AND studentDuty=#{studentDuty},
+				studentDuty=#{studentDuty},
 			</if>
 			<if test="scholarship != null">
-				AND scholarship=#{scholarship},
+				scholarship=#{scholarship},
 			</if>
 			<if test="scholarshipRange != null">
-				AND scholarshipRange=#{scholarshipRange},
+				scholarshipRange=#{scholarshipRange},
 			</if>
 			<if test="awards != null">
-				AND awards=#{awards},
+				awards=#{awards},
 			</if>
 			<if test="awardsRange != null">
-				AND awardsRange=#{awardsRange},
+				awardsRange=#{awardsRange},
 			</if>
 			<if test="awardsDes != null">
-				AND awardsDes=#{awardsDes},
+				awardsDes=#{awardsDes},
 			</if>
 			<if test="internProject != null">
-				AND internProject=#{internProject},  
+				internProject=#{internProject},  
 			</if>
 			<if test="internTime != null">
-				AND internTime=#{internTime},
+				internTime=#{internTime},
 			</if>
 			<if test="internDuty != null">
-				AND internDuty=#{internDuty},
+				internDuty=#{internDuty},
 			</if>
 			<if test="internDesc != null">
-				AND internDesc=#{internDesc},
+				internDesc=#{internDesc},
 			</if>
 			<if test="hobby != null">
-				AND hobby=#{hobby},
+				hobby=#{hobby},
 			</if>
 			<if test="honor != null">
-				AND honor=#{honor},  
+				honor=#{honor},  
 			</if>
 			<if test="assessment != null">
-				AND assessment=#{assessment},
+				assessment=#{assessment},
 			</if>
-			AND lastUpdateTimeStamp=unix_timestamp(now())*1000 
+			lastUpdateTimeStamp=unix_timestamp(now())*1000 
 		</set>
 		<where>
 			userId = #{userId}
