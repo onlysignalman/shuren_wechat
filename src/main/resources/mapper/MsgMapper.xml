@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shuren.mapper.resume.MsgMapper">
+
+	<insert id="add" parameterType="MessageLog" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO message_log
+			(mobile, results, timeStamp)
+	    values
+	    	(#{mobile}, #{results}, unix_timestamp(now())*1000)
+	</insert>
+	
+	<select id="getMsgCount" parameterType="java.util.Map" resultType="java.lang.Long">
+		SELECT 
+			COUNT(*) 
+		FROM 
+			message_log 
+		WHERE 
+			mobile = #{mobile}
+	</select>
+	
+	<select id="getMsgs" parameterType="java.util.Map" resultType="MessageLog">
+		SELECT 
+			* 
+		FROM 
+			message_log 
+		WHERE 
+			mobile = #{mobile}
+	</select>
+
+	<select id="getLastMsg" parameterType="java.lang.String" resultType="MessageLog">
+		SELECT 
+			* 
+		FROM 
+			message_log 
+		WHERE 
+			mobile = #{mobile}
+		ORDER BY
+			timeStamp DESC
+		LIMIT 
+			1
+	</select>
+
+</mapper>
