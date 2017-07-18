@@ -101,7 +101,7 @@ public class UserBaseinfoController extends BaseController{
 	 */
 	@RequestMapping("/isSend")
 	public ResponseEntity<BaseReturns> isSend(@ModelAttribute UserBaseinfo userBaseinfo, HttpSession session){
-		BaseReturns returns = userBaseinfoService.isSend(userBaseinfo.getIsSend());
+		BaseReturns returns = userBaseinfoService.isSend(userBaseinfo.getUserId(), userBaseinfo.getIsSend());
 		return ResponseEntity.ok(returns);
 	}
 }

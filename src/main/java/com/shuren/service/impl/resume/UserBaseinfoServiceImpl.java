@@ -265,11 +265,12 @@ public class UserBaseinfoServiceImpl implements UserBaseinfoService {
 	}
 
 	@Override
-	public BaseReturns isSend(String isSend) {
+	public BaseReturns isSend(Integer userId, Integer isSend) {
 		// TODO Auto-generated method stub
 		BaseReturns returns = new BaseReturns();
 		Map<String, String> map = new HashMap<>();
-		map.put("isSend", isSend);
+		map.put("isSend", isSend+"");
+		map.put("userId", userId+"");
 		userBaseinfoMapper.update(map);
 		return returns;
 	}

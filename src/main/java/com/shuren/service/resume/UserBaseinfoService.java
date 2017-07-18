@@ -51,8 +51,9 @@ public interface UserBaseinfoService {
 
 	/**
 	 * 代投
+	 * @param userId 
 	 * @param isSend
 	 * @return
 	 */
-	BaseReturns isSend(String isSend);
+	BaseReturns isSend(Integer userId, Integer isSend);
 }
