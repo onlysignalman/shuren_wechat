@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.shuren.bean.resume.ErrorInfos;
 import com.shuren.bean.resume.ModelReturns;
 import com.shuren.mapper.resume.MsgMapper;
 import com.shuren.pojo.resume.MessageLog;
@@ -35,6 +36,11 @@ public class MsgServiceImpl implements MsgService {
 		//1.第三方获取短信
 	    String param = "apikey="+apikey+"&text="+text.replace("#code#", StingUtils.getCode())+"&mobile="+mobile;
 	    String results = UrlRequest.sendPost("https://sms.yunpian.com/v2/sms/single_send.json", param);
+	    if(results == null || results.length() <= 0){
+	    	returns.setError(ErrorInfos.YANZHENGMAHUOQUSHIBAI.getError());
+	    	returns.setStatus(ErrorInfos.YANZHENGMAHUOQUSHIBAI.getStatus());
+	    	return returns;
+	    }
 		//2.短信发送成功入日志库
 	    MessageLog msg = new MessageLog();
 	    msg.setMobile(mobile);
