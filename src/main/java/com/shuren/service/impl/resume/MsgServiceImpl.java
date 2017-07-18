@@ -2,6 +2,8 @@ package com.shuren.service.impl.resume;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,8 @@ import com.shuren.utils.wechat.UrlRequest;
 @Service("MsgServiceImpl")
 public class MsgServiceImpl implements MsgService {
 
+	private Logger LOGGER = LoggerFactory.getLogger(MsgService.class);
+	
 	@Value("${msg.apikey}")
 	private String apikey;
 	@Value("${msg.text}")
@@ -32,6 +36,8 @@ public class MsgServiceImpl implements MsgService {
 	@Override
 	public ModelReturns<Map<String, Object>> getMsg(String mobile) {
 		// TODO Auto-generated method stub
+		LOGGER.info("apikey:{}", apikey);
+		LOGGER.info("text:{}", text);
 		ModelReturns<Map<String, Object>> returns = new ModelReturns<>();
 		//1.第三方获取短信
 	    String param = "apikey="+apikey+"&text="+text.replace("#code#", StingUtils.getCode())+"&mobile="+mobile;
