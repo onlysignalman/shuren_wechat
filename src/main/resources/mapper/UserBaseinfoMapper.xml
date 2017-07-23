@@ -17,6 +17,9 @@
 			user_baseinfo 
 		WHERE 
 			mobile = #{mobile} AND password = #{password}
+		ORDER BY
+			createTimeStamp DESC
+		LIMIT 1
 	</select>
 	
 	<select id="queryCount" parameterType="java.util.Map" resultType="java.lang.Long">
@@ -24,10 +27,15 @@
 			COUNT(1) 
 		FROM 
 			user_baseinfo 
-		WHERE 
-			mobile = #{mobile} AND password = #{password}
+		WHERE
+			<if test="mobile != null">
+				mobile = #{mobile}
+			</if>
+			<if test="password != null">
+				AND password = #{password}
+			</if>
 	</select>
-	
+
 	<select id="queryList" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT 
 			* 
