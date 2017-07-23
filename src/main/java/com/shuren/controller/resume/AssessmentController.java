@@ -22,7 +22,7 @@ public class AssessmentController {
     @Autowired
     private AssessmentService assessmentService;
 
-    //分页查询我的测评
+    //分页查询我的测评（）
     @RequestMapping(value = "/findMyAssessmentList", method = RequestMethod.GET)
     public ResponseEntity<ListReturns<Assessment>> findMyAssessmentList(@RequestParam(value = "offset", required = false, defaultValue = "0") Integer offset,
                                                                         @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit,

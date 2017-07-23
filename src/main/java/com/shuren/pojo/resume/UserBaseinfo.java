@@ -1,5 +1,6 @@
 package com.shuren.pojo.resume;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 /**
@@ -25,6 +26,7 @@ public class UserBaseinfo {
     private String email;
 
     //密文密码
+    @JsonIgnore
     private String password;
     
     //建立分数

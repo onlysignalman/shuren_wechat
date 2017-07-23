@@ -11,10 +11,10 @@ public class Assessment {
 
     private Integer assId;
 
-    //测评类型(职业倾向,通用能力,职业潜能)
+    //测评类型(1职业倾向,2通用能力,3职业潜能)
     private Integer assTypeId;
 
-    //是否需要积分购买
+    //是否需要积分购买,0不需要，1需要
     private Integer payType;
 
     //所需积分

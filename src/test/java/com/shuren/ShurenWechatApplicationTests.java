@@ -83,4 +83,6 @@ public class ShurenWechatApplicationTests {
     public void testEmail(){
         emailService.SendAttachMail("1138756325@qq.com","D://树仁接口文档.docx");
     }
+
+
 }
