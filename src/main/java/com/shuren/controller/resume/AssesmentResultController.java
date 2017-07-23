@@ -21,7 +21,7 @@ public class AssesmentResultController {
     private AssessmentResultService assessmentResultService;
 
     //分页查询测评报告信息
-    @RequestMapping(value = "findByPage", method = RequestMethod.GET)
+    @RequestMapping(value = "/findByPage", method = RequestMethod.GET)
     public ResponseEntity<ListReturns<AssessmentResult>> findByPage(@RequestParam("pageNum") Integer pageNum,
                                                        @RequestParam("pageSize") Integer pageSize){
 

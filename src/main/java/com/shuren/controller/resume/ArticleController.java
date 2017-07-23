@@ -21,7 +21,7 @@ public class ArticleController {
     private ArticleService articleService;
 
     //分页查询所有文章
-    @RequestMapping(value = "findAllByPage", method = RequestMethod.GET)
+    @RequestMapping(value = "/findAllByPage", method = RequestMethod.GET)
     public ResponseEntity<ListReturns<Article>> findAllByPage(@RequestParam(value = "offset", required = false, defaultValue = "0") Integer offset,
                                                               @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit,
                                                               @RequestParam(value = "type") Integer type,

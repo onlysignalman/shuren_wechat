@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 简历
  */
 @Controller
-@RequestMapping("resume")
+@RequestMapping("/resume")
 public class ResumeController {
 
     @Autowired
     private ResumeService resumeService;
 
     //查询我的简历
-    @RequestMapping(value = "findMyResume", method = RequestMethod.GET)
+    @RequestMapping(value = "/findMyResume", method = RequestMethod.GET)
     public ResponseEntity<ListReturns<Resume>> findMyResume(@RequestParam(value = "offset", required = false, defaultValue = "0") Integer offset,
                                                             @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit,
                                                             @RequestParam("userId") Integer userId ) {
@@ -31,7 +31,7 @@ public class ResumeController {
     }
 
     //查询简历市场
-    @RequestMapping(value = "findResumeList", method = RequestMethod.GET)
+    @RequestMapping(value = "/findResumeList", method = RequestMethod.GET)
     public ResponseEntity<ListReturns<Resume>> findResumeList(@RequestParam(value = "offset", required = false, defaultValue = "0") Integer offset,
                                                               @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit) {
         ListReturns<Resume> resumeListReturns = this.resumeService.findResumeList(offset, limit);
