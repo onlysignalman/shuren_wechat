@@ -32,11 +32,11 @@ public class UserExtendinfoController extends BaseController{
 		BaseReturns returns = new BaseReturns();
 		Integer userId = null;
 		//登录判断
-		Object userBaseinfo = session.getAttribute("user");
+		/*Object userBaseinfo = session.getAttribute("user");
 		if (userBaseinfo != null && userBaseinfo instanceof UserBaseinfo){
 			UserBaseinfo user = (UserBaseinfo)userBaseinfo;
 			userId = user.getUserId();
-		}
+		}*/
 		if(userId == null || userId <= 0){
 			returns.setError(ErrorInfos.YONGHUWEIDENGLU.getError());
 			returns.setStatus(ErrorInfos.YONGHUWEIDENGLU.getStatus());
