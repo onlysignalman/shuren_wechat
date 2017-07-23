@@ -37,11 +37,11 @@ public class UserExtendinfoController extends BaseController{
 			UserBaseinfo user = (UserBaseinfo)userBaseinfo;
 			userId = user.getUserId();
 		}*/
-		if(userId == null || userId <= 0){
+		/*if(userId == null || userId <= 0){
 			returns.setError(ErrorInfos.YONGHUWEIDENGLU.getError());
 			returns.setStatus(ErrorInfos.YONGHUWEIDENGLU.getStatus());
 			return ResponseEntity.ok(returns);
-		}
+		}*/
 		userExtendinfo.setUserId(userId);
 		returns = userExtendinfoService.add(userExtendinfo);
 		return ResponseEntity.ok(returns);

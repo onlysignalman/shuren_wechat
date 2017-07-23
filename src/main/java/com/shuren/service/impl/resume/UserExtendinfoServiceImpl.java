@@ -23,11 +23,11 @@ public class UserExtendinfoServiceImpl implements UserExtendinfoService {
 		// TODO Auto-generated method stub
 		BaseReturns returns = new BaseReturns();
 		Map<String, String> map = new HashMap<>();
-		map.put("userId", userExtandinfo.getUserId().toString());
+		/*map.put("userId", userExtandinfo.getUserId().toString());
 		UserExtendinfo extandinfo = userExtendinfoMapper.getOne(map);
 		if(extandinfo != null){
 			update(userExtandinfo);
-		}
+		}*/
 		userExtendinfoMapper.add(userExtandinfo);
 		return returns;
 	}
