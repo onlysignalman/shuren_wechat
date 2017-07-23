@@ -17,6 +17,9 @@
 			user_baseinfo 
 		WHERE 
 			mobile = #{mobile} AND password = #{password}
+		ORDER BY
+			createTimeStamp DESC
+		LIMIT 1
 	</select>
 	
 	<select id="queryCount" parameterType="java.util.Map" resultType="java.lang.Long">
