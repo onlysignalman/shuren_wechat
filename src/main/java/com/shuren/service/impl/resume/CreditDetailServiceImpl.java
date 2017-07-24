@@ -68,7 +68,10 @@ public class CreditDetailServiceImpl implements CreditDetailService {
             baseReturns = new BaseReturns();
             baseReturns.setError(ErrorInfos.CREDITPURCHASESUCCESS.getError());
             baseReturns.setStatus(ErrorInfos.CREDITPURCHASESUCCESS.getStatus());
+            //发送邮件
+
         }
+
         return baseReturns;
     }
 }
