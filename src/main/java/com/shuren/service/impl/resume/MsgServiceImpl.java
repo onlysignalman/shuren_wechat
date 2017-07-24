@@ -15,7 +15,6 @@ import com.shuren.mapper.resume.MsgMapper;
 import com.shuren.pojo.resume.MessageLog;
 import com.shuren.service.resume.MsgService;
 import com.shuren.utils.wechat.StingUtils;
-import com.shuren.utils.wechat.UrlRequest;
 import com.yunpian.sdk.YunpianClient;
 import com.yunpian.sdk.model.Result;
 import com.yunpian.sdk.model.SmsSingleSend;

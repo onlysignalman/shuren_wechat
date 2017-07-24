@@ -17,6 +17,7 @@ public interface UserBaseinfoMapper {
 	
 	void forget(UserBaseinfo userBaseinfo);
 
-	void update(Map<String, String> map);
-	
+	Integer update(Map<String, String> map);
+
+	UserBaseinfo queryById(Integer userId);
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 
 /**
  * Created by 董帮辉 on 2017-5-21.
+ * 简历模板
  */
 @Data
 public class Resume {

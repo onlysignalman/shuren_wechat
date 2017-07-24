@@ -1,8 +1,11 @@
 package com.shuren.bean.wechat.pay;
 
+import lombok.Data;
+
 /**
  * Created by dbh on 2017/5/24.
  */
+@Data
 public class PublicPayRequestBean {
 
     //订单号
@@ -23,51 +26,4 @@ public class PublicPayRequestBean {
     //微信用户对一个公众号唯一
     private String openId;
 
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
-    public String getTotalFee() {
-        return totalFee;
-    }
-
-    public void setTotalFee(String totalFee) {
-        this.totalFee = totalFee;
-    }
-
-    public String getSpbillCreateIp() {
-        return spbillCreateIp;
-    }
-
-    public void setSpbillCreateIp(String spbillCreateIp) {
-        this.spbillCreateIp = spbillCreateIp;
-    }
-
-    public String getNotifyUrl() {
-        return notifyUrl;
-    }
-
-    public void setNotifyUrl(String notifyUrl) {
-        this.notifyUrl = notifyUrl;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public String getOpenId() {
-        return openId;
-    }
-
-    public void setOpenId(String openId) {
-        this.openId = openId;
-    }
 }

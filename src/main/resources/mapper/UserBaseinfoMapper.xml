@@ -95,4 +95,10 @@
 			userId = #{userId}
 		</where>
 	</update>
+
+	<select id="queryById" resultType="UserBaseinfo">
+		SELECT *
+		FROM user_baseinfo
+		WHERE userId=#{userId}
+	</select>
 </mapper>

@@ -36,4 +36,10 @@
         LIMIT ${offset},${limit}
     </select>
 
+    <select id="queryById" resultType="resume">
+        SELECT *
+        FROM resume
+        WHERE id = #{resumeId}
+    </select>
+
 </mapper>

@@ -17,5 +17,8 @@ public interface ErrorInfos {
 	
 	public final static BaseErrorInfo YANZHENGMAHUOQUSHIBAI = new BaseErrorInfo("验证码获取失败", -6);
 
+	BaseErrorInfo CREDITNOTENOUGH = new BaseErrorInfo("用户积分不足",-1);
+	BaseErrorInfo CREDITPURCHASESUCCESS = new BaseErrorInfo("购买成功",0);
+
 
 }

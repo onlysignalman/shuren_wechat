@@ -38,4 +38,6 @@ public interface ResumeMapper {
      * @return
      */
     List<Resume> queryList(@Param("offset") Integer offset,@Param("limit") Integer limit,@Param("type") int type);
+
+    Resume queryById(Integer resumeId);
 }

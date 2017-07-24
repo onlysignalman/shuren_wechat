@@ -6,7 +6,7 @@ import lombok.Data;
 
 /**
  * Created by 董帮辉 on 2017-5-18.
- * 积分购买
+ * 积分明细
  */
 @Data
 public class PurchaseCreditType {
