@@ -77,8 +77,8 @@ public class CreditDetailServiceImpl implements CreditDetailService {
         Map<String, String> map = new HashMap<>();
         map.put("credit",String.valueOf(userBaseinfo.getCredit()-resume.getPoint()));
         map.put("userId",userId.toString());
-        Integer count = this.userBaseinfoMapper.update(map);
-        if(count>0){
+        Integer c = this.userBaseinfoMapper.update(map);
+        if(c>0){
             // 返回处理信息
             baseReturns = new BaseReturns();
             baseReturns.setError(ErrorInfos.CREDITPURCHASESUCCESS.getError());

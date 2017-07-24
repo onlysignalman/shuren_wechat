@@ -14,4 +14,9 @@
          #{isDel});
     </insert>
 
+    <select id="judgeIsPurchaseResum" resultType="int">
+        SELECT count(*)
+        FROM credit_detail c
+        WHERE c.userId=#{userId} AND c.buyId=#{buyId} AND c.type=#{type}
+    </select>
 </mapper>
