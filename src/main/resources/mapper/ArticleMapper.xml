@@ -25,4 +25,10 @@
         LIMIT ${offset},${limit}
     </select>
 
+    <select id="queryById" resultType="article">
+        SELECT *
+        FROM article
+        WHERE id=#{id}
+    </select>
+
 </mapper>

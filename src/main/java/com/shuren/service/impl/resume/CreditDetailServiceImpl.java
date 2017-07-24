@@ -51,6 +51,9 @@ public class CreditDetailServiceImpl implements CreditDetailService {
             baseReturns = new BaseReturns();
             baseReturns.setError(ErrorInfos.CREDITAREADYPURCHASE.getError());
             baseReturns.setStatus(ErrorInfos.CREDITAREADYPURCHASE.getStatus());
+            // 发送邮件
+            emailService.SendAttachMail(userBaseinfo.getEmail(),resume.getFilePath());
+            return baseReturns;
         }
 
         //判断用户积分是否大于简历模板所需积分
@@ -59,8 +62,7 @@ public class CreditDetailServiceImpl implements CreditDetailService {
             baseReturns = new BaseReturns();
             baseReturns.setError(ErrorInfos.CREDITNOTENOUGH.getError());
             baseReturns.setStatus(ErrorInfos.CREDITNOTENOUGH.getStatus());
-            // 发送邮件
-            emailService.SendAttachMail(userBaseinfo.getEmail(),resume.getFilePath());
+            return baseReturns;
         }
 
         //用户积分够用

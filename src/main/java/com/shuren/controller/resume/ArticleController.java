@@ -1,11 +1,13 @@
 package com.shuren.controller.resume;
 
 import com.shuren.bean.resume.ListReturns;
+import com.shuren.bean.resume.ModelReturns;
 import com.shuren.pojo.resume.Article;
 import com.shuren.service.resume.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +31,14 @@ public class ArticleController {
         ListReturns<Article> articleListReturns = articleService.findByTypeAndSubTypeList(offset, limit, type, subtype);
         return ResponseEntity.ok(articleListReturns);
     }
+
+    //查询文章详情
+    @GetMapping("/findById")
+    public ResponseEntity<ModelReturns<Article>> findById(Integer id){
+        ModelReturns<Article> returns = this.articleService.findById(id);
+        return ResponseEntity.ok(returns);
+    }
+
 
 
 }

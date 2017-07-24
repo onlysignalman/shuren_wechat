@@ -1,6 +1,7 @@
 package com.shuren.service.resume;
 
 import com.shuren.bean.resume.ListReturns;
+import com.shuren.bean.resume.ModelReturns;
 import com.shuren.pojo.resume.Article;
 
 /**
@@ -16,4 +17,11 @@ public interface ArticleService {
      * @return
      */
     ListReturns<Article> findByTypeAndSubTypeList(Integer offset, Integer limit, Integer type, String subtype);
+
+    /**
+     * 查询文章详情
+     * @param id
+     * @return
+     */
+    ModelReturns<Article> findById(Integer id);
 }

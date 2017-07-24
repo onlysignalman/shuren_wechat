@@ -28,4 +28,11 @@ public interface ArticleMapper {
      * @return
      */
     List<Article> queryByTypeAndSubTypeList(@Param("offset") Integer offset,@Param("limit") Integer limit,@Param("type") Integer type,@Param("subtype") String subtype);
+
+    /**
+     * 查询文章详情
+     * @param id
+     * @return
+     */
+    Article queryById(Integer id);
 }

@@ -20,7 +20,7 @@ public class CreditDetailController {
     private CreditDetailService creditDetailService;
 
     //积分购买简历
-    @GetMapping("purchaseAssesment")
+    @GetMapping("/purchaseAssesment")
     public ResponseEntity<BaseReturns> purchaseAssesment(@RequestParam("userId") Integer userId,
                                                          @RequestParam("resumeId") Integer resumeId){
         BaseReturns baseReturns = this.creditDetailService.purchaseAssesment(userId,resumeId);

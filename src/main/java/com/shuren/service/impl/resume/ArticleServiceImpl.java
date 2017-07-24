@@ -3,6 +3,7 @@ package com.shuren.service.impl.resume;
 import com.shuren.bean.resume.Constant;
 import com.shuren.bean.resume.ErrorInfos;
 import com.shuren.bean.resume.ListReturns;
+import com.shuren.bean.resume.ModelReturns;
 import com.shuren.mapper.resume.ArticleMapper;
 import com.shuren.pojo.resume.Article;
 import com.shuren.service.resume.ArticleService;
@@ -34,5 +35,15 @@ public class ArticleServiceImpl implements ArticleService {
         listReturns.setCount(count);
         listReturns.setList(articleList);
         return listReturns;
+    }
+
+    @Override
+    public ModelReturns<Article> findById(Integer id) {
+        ModelReturns<Article> returns = new ModelReturns<>();
+        Article article = this.articleMapper.queryById(id);
+        returns.setModel(article);
+        returns.setError(ErrorInfos.ARTICLEDATASUCCESS.getError());
+        returns.setStatus(ErrorInfos.ARTICLEDATASUCCESS.getStatus());
+        return returns;
     }
 }
