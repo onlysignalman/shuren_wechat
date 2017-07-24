@@ -9,6 +9,7 @@ import com.shuren.pojo.resume.CreditDetail;
 import com.shuren.pojo.resume.Resume;
 import com.shuren.pojo.resume.UserBaseinfo;
 import com.shuren.service.resume.CreditDetailService;
+import com.shuren.service.resume.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,9 @@ public class CreditDetailServiceImpl implements CreditDetailService {
     @Autowired
     private CreditDetailMapper creditDetailMapper;
 
+    @Autowired
+    private EmailService emailService;
+
     @Override
     public BaseReturns purchaseAssesment(Integer userId, Integer resumeId) {
 
@@ -39,17 +43,24 @@ public class CreditDetailServiceImpl implements CreditDetailService {
         //根据简历模板id查询简历模板信息
         Resume resume = this.resumeMapper.queryById(resumeId);
 
-        //TODO
+        BaseReturns baseReturns = null;
         //判断用户是否已经购买过简历模板
-
+        Integer count = this.creditDetailMapper.judgeIsPurchaseResum(userId, resume.getId(),1);
+        if(count>0){
+            //返回信息
+            baseReturns = new BaseReturns();
+            baseReturns.setError(ErrorInfos.CREDITAREADYPURCHASE.getError());
+            baseReturns.setStatus(ErrorInfos.CREDITAREADYPURCHASE.getStatus());
+        }
 
         //判断用户积分是否大于简历模板所需积分
-        BaseReturns baseReturns = null;
         if(userBaseinfo.getCredit()<resume.getPoint()){
             // 返回错误信息
             baseReturns = new BaseReturns();
             baseReturns.setError(ErrorInfos.CREDITNOTENOUGH.getError());
             baseReturns.setStatus(ErrorInfos.CREDITNOTENOUGH.getStatus());
+            // 发送邮件
+            emailService.SendAttachMail(userBaseinfo.getEmail(),resume.getFilePath());
         }
 
         //用户积分够用
@@ -72,9 +83,8 @@ public class CreditDetailServiceImpl implements CreditDetailService {
             baseReturns = new BaseReturns();
             baseReturns.setError(ErrorInfos.CREDITPURCHASESUCCESS.getError());
             baseReturns.setStatus(ErrorInfos.CREDITPURCHASESUCCESS.getStatus());
-            //TODO
             // 发送邮件
-
+            emailService.SendAttachMail(userBaseinfo.getEmail(),resume.getFilePath());
         }
 
         return baseReturns;

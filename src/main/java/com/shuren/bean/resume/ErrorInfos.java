@@ -19,6 +19,6 @@ public interface ErrorInfos {
 
 	BaseErrorInfo CREDITNOTENOUGH = new BaseErrorInfo("用户积分不足",-1);
 	BaseErrorInfo CREDITPURCHASESUCCESS = new BaseErrorInfo("购买成功",0);
-
+	BaseErrorInfo CREDITAREADYPURCHASE = new BaseErrorInfo("已购买的简历",1);
 
 }
