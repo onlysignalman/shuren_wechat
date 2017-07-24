@@ -39,6 +39,10 @@ public class CreditDetailServiceImpl implements CreditDetailService {
         //根据简历模板id查询简历模板信息
         Resume resume = this.resumeMapper.queryById(resumeId);
 
+        //TODO
+        //判断用户是否已经购买过简历模板
+
+
         //判断用户积分是否大于简历模板所需积分
         BaseReturns baseReturns = null;
         if(userBaseinfo.getCredit()<resume.getPoint()){
@@ -68,7 +72,8 @@ public class CreditDetailServiceImpl implements CreditDetailService {
             baseReturns = new BaseReturns();
             baseReturns.setError(ErrorInfos.CREDITPURCHASESUCCESS.getError());
             baseReturns.setStatus(ErrorInfos.CREDITPURCHASESUCCESS.getStatus());
-            //发送邮件
+            //TODO
+            // 发送邮件
 
         }
 
