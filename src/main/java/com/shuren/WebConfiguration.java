@@ -64,4 +64,5 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
         registry.addInterceptor(loginInterceptor());
         registry.addInterceptor(new CommonInterceptor()).addPathPatterns("/**");
     }
+
 }
